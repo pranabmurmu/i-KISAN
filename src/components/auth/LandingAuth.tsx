@@ -1131,7 +1131,7 @@ export const LandingAuth: React.FC = () => {
           <div className="flex items-center gap-2">
             <FarmerLogo className="w-5 h-5 text-green-700" />
             <span className="font-bold text-green-950">i KISAN</span>
-            <span>— Smart India Hackathon Agricultural Decision & Distress Mitigation Platform</span>
+            <span>— Agricultural Decision & Distress Mitigation Platform</span>
           </div>
           <div className="flex items-center gap-4 text-[11px] font-semibold text-green-800">
             <span>🌾 22 Regional Languages</span>

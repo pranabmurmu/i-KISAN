@@ -25,10 +25,10 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", geminiConfigured: hasGemini });
 });
 
-// 1. Google Gemini Crop Disease Lab Diagnosis
+// 1. Google Gemini Crop Disease Lab Diagnosis & Auto-Crop Identification
 app.post("/api/disease-diagnose", async (req, res) => {
   try {
-    const { image, cropName = "Tomato", symptoms = [], symptomDescription = "", language = "en" } = req.body;
+    const { image, cropName = "Auto-Detect", symptoms = [], symptomDescription = "", language = "en" } = req.body;
     const ai = getGeminiClient();
 
     if (!ai) {
@@ -65,27 +65,29 @@ app.post("/api/disease-diagnose", async (req, res) => {
 
     const targetLang = languageNames[language] || "English";
 
-    const promptText = `Analyze this crop leaf and plant sample for agricultural disease or pest infestation.
-Crop Type: ${cropName}
-Selected Symptoms by Farmer: ${symptoms.join(", ") || "None specified"}
-Farmer Voice Note / Description: ${symptomDescription || "None"}
+    const promptText = `Analyze this agricultural crop plant/leaf sample. 
+1. AUTO-IDENTIFY THE CROP PLANT SPECIES: Examine the leaf shape, venation, texture, and visual characteristics to determine the exact crop name (e.g. Tomato, Rice/Paddy, Potato, Cotton, Wheat, Maize, Chilli, Brinjal, Onion, Sugarcane, Groundnut, Mustard, etc.).
+2. DIAGNOSE DISEASE / PEST INFESTATION: Examine lesions, chlorosis, fungal spore bodies, or insect damage.
+${cropName && cropName !== "Auto-Detect" ? `Hinted Crop: ${cropName}` : "Crop Identification: Auto-detect from image & symptoms"}
+Selected Symptoms by Farmer: ${symptoms.join(", ") || "Visual inspection of photo"}
+Farmer Voice Note / Description: ${symptomDescription || "None provided"}
 Target Language: ${targetLang}
 
-Diagnose the specific plant pathology or pest. Provide accurate ICAR/KVK verified bio-control remedies and chemical dosages with exact dilution units (e.g. ml/liter or g/acre) in ${targetLang}.`;
+Research and return structured plant pathology diagnosis with accurate ICAR/KVK verified bio-control remedies and chemical dosages with exact dilution units in ${targetLang}.`;
 
     contents.push(promptText);
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.5-flash",
       contents,
       config: {
-        systemInstruction: `You are an expert ICAR (Indian Council of Agricultural Research) and State Agriculture University plant pathologist specializing in South Asian crop diagnostics.
-Always return structured JSON identifying the crop issue, confidence percentage, severity ('Mild', 'Moderate', or 'Severe'), symptoms, immediate recommended actions, biological/organic remedies, chemical treatments with safe dosages, prevention tips, causes, and an agricultural advisory disclaimer.`,
+        systemInstruction: `You are an expert ICAR (Indian Council of Agricultural Research) and State Agriculture University plant pathologist and botanist specializing in South Asian crop diagnostics and species identification.
+First, accurately recognize and specify the crop plant name in 'cropName'. Then diagnose the issue, confidence percentage, severity ('Mild', 'Moderate', or 'Severe'), symptoms, immediate recommended actions, biological/organic remedies, chemical treatments with safe dosages, prevention tips, causes, and an agricultural advisory disclaimer in ${targetLang}.`,
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
           properties: {
-            cropName: { type: Type.STRING },
+            cropName: { type: Type.STRING, description: `Identified crop name (e.g. Tomato, Paddy / Rice, Potato, Wheat, Cotton) translated to ${targetLang}` },
             detectedIssue: { type: Type.STRING, description: "Common name of disease/pest and scientific name" },
             confidencePercent: { type: Type.NUMBER, description: "Confidence score between 75 and 99" },
             severity: { 
@@ -145,7 +147,7 @@ Always return structured JSON identifying the crop issue, confidence percentage,
       success: true,
       diagnosis: {
         ...diagnosis,
-        cropName: diagnosis.cropName || cropName,
+        cropName: diagnosis.cropName || (cropName !== "Auto-Detect" ? cropName : "Identified Crop"),
       },
       isGemini: true,
     });
@@ -209,7 +211,7 @@ Respond directly to the farmer in ${targetLang}. Provide a clear, actionable, ex
 Also provide 3 relevant follow-up questions that the farmer can ask next.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.5-flash",
       contents: userPrompt,
       config: {
         systemInstruction: `You are 'i KISAN Agri AI' — an agricultural scientist and farmer advisor for Indian smallholder farmers.

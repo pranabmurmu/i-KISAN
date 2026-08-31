@@ -8,14 +8,18 @@ import { HomeDashboard } from './components/dashboard/HomeDashboard';
 import { DiseaseDetection } from './components/disease/DiseaseDetection';
 import { MarketplaceView } from './components/marketplace/MarketplaceView';
 import { FarmingInsights } from './components/insights/FarmingInsights';
+import { LoanDetailsView } from './components/loans/LoanDetailsView';
+import { GoogleChatView } from './components/chat/GoogleChatView';
 import { ProfileView } from './components/profile/ProfileView';
 import { SettingsModal } from './components/modals/SettingsModal';
+import { NotificationsModal } from './components/modals/NotificationsModal';
 import { DistressSimulatorModal } from './components/distress/DistressSimulatorModal';
 import { AiFarmerAssistant } from './components/chat/AiFarmerAssistant';
 
 const MainAppContent: React.FC = () => {
   const { user, activeView } = useApp();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
 
   // If user is not logged in, show the split Landing/Auth page
   if (!user) {
@@ -25,7 +29,10 @@ const MainAppContent: React.FC = () => {
   return (
     <div id="smart-krishi-app-root" className="min-h-screen bg-green-50 flex flex-col text-green-950 font-sans antialiased">
       {/* Top Navbar */}
-      <Navbar onOpenSettings={() => setIsSettingsOpen(true)} />
+      <Navbar
+        onOpenNotifications={() => setIsNotificationsOpen(true)}
+        onOpenSettings={() => setIsSettingsOpen(true)}
+      />
 
       {/* Main Layout Area */}
       <div className="flex-1 flex w-full max-w-[1600px] mx-auto">
@@ -40,6 +47,8 @@ const MainAppContent: React.FC = () => {
           {activeView === 'home' && <HomeDashboard />}
           {activeView === 'disease' && <DiseaseDetection />}
           {activeView === 'marketplace' && <MarketplaceView />}
+          {activeView === 'loans' && <LoanDetailsView />}
+          {activeView === 'google-chat' && <GoogleChatView />}
           {activeView === 'insights' && <FarmingInsights />}
           {activeView === 'profile' && <ProfileView />}
         </main>
@@ -50,6 +59,12 @@ const MainAppContent: React.FC = () => {
 
       {/* Floating AI Farmer Assistant Chatbot */}
       <AiFarmerAssistant />
+
+      {/* Notifications Modal */}
+      <NotificationsModal
+        isOpen={isNotificationsOpen}
+        onClose={() => setIsNotificationsOpen(false)}
+      />
 
       {/* SIH Farmer Distress Multi-Factor Simulator Modal */}
       <DistressSimulatorModal />

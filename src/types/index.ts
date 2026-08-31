@@ -17,6 +17,14 @@ export interface FarmerProfile {
   cropGrowthStage: 'Vegetative' | 'Flowering' | 'Grain Filling' | 'Maturity' | 'Harvesting';
   expectedHarvestDate?: string;
   avatarUrl?: string;
+  hasKCCLoan?: boolean;
+  kccLimit?: number;
+  outstandingLoan?: number;
+  bankName?: string;
+  loanAccountNumber?: string;
+  loanInterestRate?: number;
+  loanDueDate?: string;
+  loanType?: 'Kisan Credit Card (KCC)' | 'Tractor / Farm Mechanization' | 'PM-KUSUM Solar Pump' | 'Dairy & Animal Husbandry' | 'Agri Infrastructure';
 }
 
 export interface WeatherDay {
@@ -164,10 +172,13 @@ export interface NotificationItem {
   title: string;
   message: string;
   timestamp: string;
-  category: 'weather' | 'crop' | 'market' | 'risk' | 'government' | 'officer';
+  category: 'weather' | 'crop' | 'market' | 'risk' | 'government' | 'officer' | 'loan';
   priority: 'normal' | 'warning' | 'urgent';
   read: boolean;
   actionLink?: string;
+  actionLabel?: string;
+  amount?: string;
+  dueDate?: string;
 }
 
 export interface ChatMessage {

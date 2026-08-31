@@ -24,8 +24,9 @@ export const AiFarmerAssistant: React.FC = () => {
   const {
     isChatOpen,
     setIsChatOpen,
-    chatMessages,
+    chatMessages = [],
     addChatMessage,
+    clearChat,
     user,
     language,
     t,
@@ -40,16 +41,21 @@ export const AiFarmerAssistant: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const quickQuestions = [
-    t.chatPreset1,
-    t.chatPreset2,
-    t.chatPreset3,
-    t.chatPreset4,
-  ];
+    t?.chatPreset1 || 'How to control stem borer in Paddy?',
+    t?.chatPreset2 || 'Urea & DAP fertilizer dosage guide',
+    t?.chatPreset3 || 'Check today mandi wholesale rate',
+    t?.chatPreset4 || 'Precaution for rain & spraying',
+  ].filter(Boolean);
 
-  // Auto scroll to bottom
+  const inputFieldRef = useRef<HTMLInputElement | null>(null);
+
+  // Auto scroll to bottom & focus input when opening
   useEffect(() => {
     if (isChatOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        inputFieldRef.current?.focus();
+      }, 100);
     }
   }, [chatMessages, isChatOpen]);
 
@@ -64,12 +70,15 @@ export const AiFarmerAssistant: React.FC = () => {
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
 
-    addChatMessage(userMsg);
+    if (addChatMessage) {
+      addChatMessage(userMsg);
+    }
     setInputText('');
     setIsTyping(true);
 
     try {
       // Call Google Gemini Chat Backend Endpoint
+      const historyPayload = (chatMessages || []).slice(-6).map((m) => ({ sender: m.sender, text: m.text }));
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -77,43 +86,43 @@ export const AiFarmerAssistant: React.FC = () => {
           message: messageContent,
           language,
           farmerProfile: user,
-          history: chatMessages.slice(-6).map((m) => ({ sender: m.sender, text: m.text })),
+          history: historyPayload,
         }),
       });
 
       const data = await response.json();
 
-      if (data.success && data.text) {
+      if (data && data.success && data.text) {
         const botMsg: ChatMessage = {
           id: 'msg-' + (Date.now() + 1),
           sender: 'bot',
           text: data.text,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          suggestedPrompts: data.suggestedPrompts || [],
+          suggestedPrompts: Array.isArray(data.suggestedPrompts) ? data.suggestedPrompts : [],
         };
-        addChatMessage(botMsg);
+        addChatMessage?.(botMsg);
       } else {
         // Fallback to local rule engine
-        const reply = generateFarmerAiResponse(messageContent, language);
+        const reply = generateFarmerAiResponse(messageContent, language as any);
         const botMsg: ChatMessage = {
           id: 'msg-' + (Date.now() + 1),
           sender: 'bot',
           text: reply.text,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          suggestedPrompts: reply.suggestedPrompts,
+          suggestedPrompts: reply.suggestedPrompts || [],
         };
-        addChatMessage(botMsg);
+        addChatMessage?.(botMsg);
       }
     } catch {
-      const reply = generateFarmerAiResponse(messageContent, language);
+      const reply = generateFarmerAiResponse(messageContent, language as any);
       const botMsg: ChatMessage = {
         id: 'msg-' + (Date.now() + 1),
         sender: 'bot',
         text: reply.text,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        suggestedPrompts: reply.suggestedPrompts,
+        suggestedPrompts: reply.suggestedPrompts || [],
       };
-      addChatMessage(botMsg);
+      addChatMessage?.(botMsg);
     } finally {
       setIsTyping(false);
     }
@@ -241,8 +250,9 @@ export const AiFarmerAssistant: React.FC = () => {
           <button
             id="open-ai-chatbot-fab"
             onClick={() => setIsChatOpen(true)}
-            className="w-14 h-14 sm:w-16 sm:h-16 bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center border-4 border-white hover:scale-105 hover:bg-green-700 transition-all group"
+            className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-2xl flex items-center justify-center border-4 border-white hover:scale-105 transition-all group cursor-pointer ring-4 ring-emerald-400/20 active:scale-95"
             aria-label="Open AI Farmer Assistant"
+            title="Chat with AI Krishi Advisor (Gemini 2.5 Flash)"
           >
             <Bot className="w-7 h-7 sm:w-8 sm:h-8 text-white transition-transform group-hover:rotate-6" />
           </button>
@@ -264,7 +274,7 @@ export const AiFarmerAssistant: React.FC = () => {
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="font-extrabold text-sm leading-tight">
-                    {t.chatAssistantTitle}
+                    {t?.chatAssistantTitle || 'AI Krishi Advisor'}
                   </h3>
                   <span className="text-[10px] font-extrabold bg-emerald-800 text-emerald-200 border border-emerald-500/50 px-1.5 py-0.2 rounded-md flex items-center gap-1">
                     <Sparkles className="w-2.5 h-2.5 text-emerald-300" /> Gemini 2.5 Flash
@@ -277,6 +287,13 @@ export const AiFarmerAssistant: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-1">
+              <button
+                onClick={() => clearChat?.()}
+                title="Clear conversation"
+                className="p-1.5 text-white/80 hover:text-white rounded-lg hover:bg-white/10 text-xs flex items-center gap-1"
+              >
+                Clear
+              </button>
               <button
                 onClick={() => setIsChatOpen(false)}
                 className="p-1.5 text-white/80 hover:text-white rounded-lg hover:bg-white/10"
@@ -291,7 +308,7 @@ export const AiFarmerAssistant: React.FC = () => {
             <span className="text-[10px] uppercase font-bold text-green-600 pl-1 shrink-0">
               Quick:
             </span>
-            {quickQuestions.map((q, idx) => (
+            {(quickQuestions || []).map((q, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSendMessage(q)}
@@ -304,7 +321,7 @@ export const AiFarmerAssistant: React.FC = () => {
 
           {/* Chat Messages List */}
           <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-stone-50/50">
-            {chatMessages.map((msg) => {
+            {(chatMessages || []).map((msg) => {
               const isBot = msg.sender === 'bot';
               return (
                 <div
@@ -406,10 +423,11 @@ export const AiFarmerAssistant: React.FC = () => {
               </button>
 
               <input
+                ref={inputFieldRef}
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                placeholder={t.chatPlaceholder}
+                placeholder={t?.chatPlaceholder || 'Ask anything about crops, pests, fertilizer dosage...'}
                 className="flex-1 px-3.5 py-2.5 bg-green-50/40 border border-green-100 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-green-950"
               />
 

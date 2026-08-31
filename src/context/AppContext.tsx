@@ -7,6 +7,7 @@ import {
   NotificationItem,
   CartItem,
   AgriProduct,
+  ChatMessage,
 } from '../types';
 import {
   demoFarmer,
@@ -16,7 +17,7 @@ import {
 } from '../data/mockData';
 import { translations, TranslationSchema } from '../data/translations';
 
-export type ActiveView = 'home' | 'disease' | 'marketplace' | 'insights' | 'profile' | 'settings';
+export type ActiveView = 'home' | 'disease' | 'marketplace' | 'insights' | 'loans' | 'google-chat' | 'profile' | 'settings';
 
 interface AppContextType {
   user: FarmerProfile | null;
@@ -48,6 +49,9 @@ interface AppContextType {
   setSearchQuery: (query: string) => void;
   isChatOpen: boolean;
   setIsChatOpen: (val: boolean) => void;
+  chatMessages: ChatMessage[];
+  addChatMessage: (msg: ChatMessage) => void;
+  clearChat: () => void;
   loginDemoFarmer: () => void;
   logoutFarmer: () => void;
   recalculateDistressRisk: (customRainDeviation?: number, customPriceDrop?: number, customLoanUrgent?: boolean) => void;
@@ -110,6 +114,43 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [searchQuery, setSearchQuery] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isDistressModalOpen, setIsDistressModalOpen] = useState(false);
+
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>(() => {
+    return [
+      {
+        id: 'msg-welcome',
+        sender: 'bot',
+        text: `Namaste Kisan! I am your AI Krishi Advisor powered by Google Gemini. Ask me anything about crop diseases, organic fertilizers, market mandi rates, or government subsidies.`,
+        timestamp: 'Just now',
+        suggestedPrompts: [
+          'How to control stem borer in Paddy?',
+          'Urea & DAP fertilizer dosage guide',
+          'Check today mandi wholesale rate',
+          'Precaution for rain & spraying',
+        ],
+      },
+    ];
+  });
+
+  const addChatMessage = (msg: ChatMessage) => {
+    setChatMessages((prev) => [...prev, msg]);
+  };
+
+  const clearChat = () => {
+    setChatMessages([
+      {
+        id: 'msg-' + Date.now(),
+        sender: 'bot',
+        text: `Conversation cleared. Namaste! How may I assist your farm today?`,
+        timestamp: 'Just now',
+        suggestedPrompts: [
+          'Paddy pest management',
+          'Soil testing procedure',
+          'Mandi market rates',
+        ],
+      },
+    ]);
+  };
 
   // Sync to localStorage
   useEffect(() => {
@@ -343,6 +384,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setSearchQuery,
         isChatOpen,
         setIsChatOpen,
+        chatMessages,
+        addChatMessage,
+        clearChat,
         loginDemoFarmer,
         logoutFarmer,
         recalculateDistressRisk,

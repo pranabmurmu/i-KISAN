@@ -21,6 +21,7 @@ import {
   Flame,
   Check,
   Leaf,
+  MessageSquare,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { mockDiseaseSamples } from '../../data/mockData';
@@ -28,13 +29,13 @@ import { cropNamesList } from '../../data/translations';
 import { DiseaseDetectionResult } from '../../types';
 
 export const DiseaseDetection: React.FC = () => {
-  const { t, language } = useApp();
+  const { t, language, setActiveView } = useApp();
 
   const [selectedCrop, setSelectedCrop] = useState<string>('Tomato');
   const [symptomText, setSymptomText] = useState<string>('');
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const [uploadedImage, setUploadedImage] = useState<string | null>(
-    'https://images.unsplash.com/photo-1592417817098-8f3d6910985b?auto=format&fit=crop&w=600&q=80'
+    '/src/assets/images/ripe_red_tomatoes_1788178557607.jpg'
   );
   const [isCameraActive, setIsCameraActive] = useState<boolean>(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
@@ -183,7 +184,7 @@ export const DiseaseDetection: React.FC = () => {
         setIsGeminiDiagnosed(Boolean(data.isGemini));
         setEngineNote(
           data.isGemini
-            ? 'Verified by Google Gemini 2.5 Flash Vision Pathologist'
+            ? 'Auto-Identified & Verified by Google Gemini 3.5 Flash AI'
             : 'Generated from ICAR Agronomy Knowledge Engine'
         );
       } else {
@@ -210,7 +211,7 @@ export const DiseaseDetection: React.FC = () => {
     setSelectedCrop(sample.cropName);
     setDiagnosticResult(sample);
     if (sample.cropName.includes('Tomato')) {
-      setUploadedImage('https://images.unsplash.com/photo-1592417817098-8f3d6910985b?auto=format&fit=crop&w=600&q=80');
+      setUploadedImage('/src/assets/images/ripe_red_tomatoes_1788178557607.jpg');
     } else if (sample.cropName.includes('Paddy')) {
       setUploadedImage('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=600&q=80');
     } else {
@@ -234,23 +235,26 @@ export const DiseaseDetection: React.FC = () => {
               1. Crop & Visual Input
             </h2>
 
-            {/* Select Crop */}
-            <div>
-              <label className="block text-xs font-bold text-green-900 mb-1">
-                {t.selectCrop}
-              </label>
-              <select
-                id="disease-crop-select"
-                value={selectedCrop}
-                onChange={(e) => setSelectedCrop(e.target.value)}
-                className="w-full px-3 py-2.5 bg-green-50/60 border border-green-200 rounded-xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-green-500 text-green-950"
-              >
-                {cropNamesList.map((crop) => (
-                  <option key={crop} value={crop}>
-                    {crop}
-                  </option>
-                ))}
-              </select>
+            {/* Auto Crop Detection Info Banner */}
+            <div className="p-3 bg-emerald-50/80 border border-emerald-200/90 rounded-2xl flex items-center justify-between gap-2.5">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-2xs">
+                  <Sparkles className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs font-black text-emerald-950">
+                      Auto Crop & Disease Identification
+                    </span>
+                    <span className="text-[9px] font-extrabold bg-emerald-200/80 text-emerald-900 px-1.5 py-0.2 rounded-md">
+                      Gemini 3.5 Flash
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-emerald-800 font-medium">
+                    Upload or snap any plant photo — Gemini automatically identifies the crop & searches treatments.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Image Preview / Camera Viewport */}
@@ -432,7 +436,7 @@ export const DiseaseDetection: React.FC = () => {
                     </span>
                     <span className="inline-flex items-center gap-1 text-[11px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded-md">
                       <Sparkles className="w-3 h-3 text-emerald-600" />
-                      <span>{isGeminiDiagnosed ? 'Gemini 2.5 Flash AI' : 'Agronomy Engine'}</span>
+                      <span>{isGeminiDiagnosed ? 'Gemini 3.5 Flash AI' : 'Agronomy Engine'}</span>
                     </span>
                   </div>
                   <h2 className="text-xl sm:text-2xl font-extrabold text-green-950 mt-0.5">
@@ -553,6 +557,26 @@ export const DiseaseDetection: React.FC = () => {
                 <p className="leading-relaxed">
                   <strong>Important Farmer Disclaimer:</strong> {diagnosticResult.disclaimer}
                 </p>
+              </div>
+
+              {/* Discuss in Google Chat Action */}
+              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-emerald-950">Share with Extension Officer</h4>
+                    <p className="text-[11px] text-emerald-700">Discuss this leaf diagnosis in your Google Chat spaces</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setActiveView('google-chat')}
+                  className="w-full sm:w-auto px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-extrabold rounded-xl flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs transition-colors"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>Open Google Chat</span>
+                </button>
               </div>
 
             </div>

@@ -152,14 +152,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNotifications, onOpenSetti
             <button
               id="navbar-notif-bell"
               onClick={onOpenNotifications}
-              className="relative p-2 rounded-xl text-green-700 hover:bg-green-50 border border-green-100 focus:outline-none transition-colors"
-              aria-label="Notifications"
+              className="relative p-2.5 rounded-2xl text-green-800 hover:bg-green-100/70 border border-green-200 focus:outline-none transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95 bg-white"
+              aria-label="View Kisan Notifications & Weather Alerts"
+              title="View Kisan Notifications & Weather Alerts"
             >
-              <Bell className="w-4 h-4 text-green-700" />
+              <Bell className="w-4 h-4 text-green-800" />
               {unreadNotifCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white">
-                  {unreadNotifCount}
-                </span>
+                <>
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose-600 text-white text-[11px] font-black rounded-full flex items-center justify-center border-2 border-white shadow-xs">
+                    {unreadNotifCount}
+                  </span>
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose-400 rounded-full animate-ping opacity-75 pointer-events-none" />
+                </>
               )}
             </button>
 

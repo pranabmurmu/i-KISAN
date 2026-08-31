@@ -5,6 +5,7 @@ import {
   Store,
   BookOpen,
   ChevronRight,
+  Landmark,
 } from 'lucide-react';
 import { FarmerLogo } from '../common/FarmerLogo';
 import { useApp, ActiveView } from '../../context/AppContext';
@@ -43,6 +44,12 @@ export const Sidebar: React.FC<SidebarProps> = () => {
       id: 'insights',
       label: t.navInsights,
       icon: BookOpen,
+    },
+    {
+      id: 'loans',
+      label: 'Agri Loans & KCC',
+      icon: Landmark,
+      badge: '4% Rate',
     },
   ];
 
