@@ -1,0 +1,11 @@
+{
+  "name": "i KISAN – Smart Crop Advisory & Farmer Distress Early-Warning System",
+  "description": "A modern, farmer-friendly multilingual agricultural advisory and distress early-warning platform for small and marginal farmers.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
