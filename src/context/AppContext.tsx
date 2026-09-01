@@ -69,17 +69,8 @@ const STORAGE_THRESHOLD_KEY = 'smart_krishi_threshold_v1';
 const STORAGE_CART_KEY = 'smart_krishi_cart_v1';
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<FarmerProfile | null>(() => {
-    const saved = localStorage.getItem(STORAGE_USER_KEY);
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch (e) {
-        return demoFarmer;
-      }
-    }
-    return demoFarmer; // Default demo farmer Pranab logged in so prototype is immediately viewable
-  });
+  // Start with null by default so every visitor lands on the login page first
+  const [user, setUser] = useState<FarmerProfile | null>(null);
 
   const [activeView, setActiveView] = useState<ActiveView>('home');
   const [language, setLanguageState] = useState<LanguageCode>(() => {

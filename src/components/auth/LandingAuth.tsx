@@ -121,10 +121,10 @@ export const LandingAuth: React.FC = () => {
     {
       id: 'up-1',
       category: 'weather',
-      categoryLabel: 'Weather Alert',
-      title: 'Heavy Rainfall Warning',
-      message: 'Heavy rainfall and thunderstorm expected in your region tomorrow. Postpone canal irrigation and spraying.',
-      tag: 'Urgent',
+      categoryLabel: t.filterWeather,
+      title: t.updateWeatherTitle,
+      message: t.updateWeatherMsg,
+      tag: t.updateWeatherTag,
       time: '15 mins ago',
       icon: CloudSun,
       color: 'amber',
@@ -132,10 +132,10 @@ export const LandingAuth: React.FC = () => {
     {
       id: 'up-2',
       category: 'scheme',
-      categoryLabel: 'Govt Scheme',
-      title: 'PM-KISAN 17th Installment',
-      message: 'PM-KISAN related update: e-KYC deadline extended. ₹2,000 direct transfer scheduled for active farmers.',
-      tag: 'Benefit',
+      categoryLabel: t.filterSchemes,
+      title: t.updateSchemeTitle,
+      message: t.updateSchemeMsg,
+      tag: t.updateSchemeTag,
       time: '1 hour ago',
       icon: FileText,
       color: 'emerald',
@@ -143,10 +143,10 @@ export const LandingAuth: React.FC = () => {
     {
       id: 'up-3',
       category: 'market',
-      categoryLabel: 'Mandi Price',
-      title: 'Tomato & Paddy Rates Surge',
-      message: 'Tomato prices increased by 12% in nearby mandis (₹2,450/qtl). High arrival demand window.',
-      tag: 'Bullish',
+      categoryLabel: t.filterMandi,
+      title: t.updateMandiTitle,
+      message: t.updateMandiMsg,
+      tag: t.updateMandiTag,
       time: '2 hours ago',
       icon: TrendingUp,
       color: 'green',
@@ -154,10 +154,10 @@ export const LandingAuth: React.FC = () => {
     {
       id: 'up-4',
       category: 'scheme',
-      categoryLabel: 'Crop Insurance',
-      title: 'PMFBY Kharif Deadline',
-      message: 'Apply for crop insurance before the deadline (31st August). Ensure your localized loss claims are registered within 72h.',
-      tag: 'Important',
+      categoryLabel: t.filterSchemes,
+      title: t.updateInsuranceTitle,
+      message: t.updateInsuranceMsg,
+      tag: t.updateInsuranceTag,
       time: '3 hours ago',
       icon: Shield,
       color: 'blue',
@@ -165,10 +165,10 @@ export const LandingAuth: React.FC = () => {
     {
       id: 'up-5',
       category: 'advisory',
-      categoryLabel: 'Crop Advisory',
-      title: 'Paddy Stem Borer Alert',
-      message: 'High humidity favors yellow stem borer in vegetative stage. Install pheromone traps at 5 traps/acre.',
-      tag: 'Pest Caution',
+      categoryLabel: t.filterAdvisory,
+      title: t.updatePestTitle,
+      message: t.updatePestMsg,
+      tag: t.updatePestTag,
       time: '5 hours ago',
       icon: Leaf,
       color: 'red',
@@ -176,10 +176,10 @@ export const LandingAuth: React.FC = () => {
     {
       id: 'up-6',
       category: 'advisory',
-      categoryLabel: 'Farming Tip',
-      title: 'Split Nitrogen Application',
-      message: 'Apply remaining 25% Nitrogen top-dressing at panicle initiation for 14% higher grain kernel weight.',
-      tag: 'Advisory',
+      categoryLabel: t.filterAdvisory,
+      title: t.updateTipTitle,
+      message: t.updateTipMsg,
+      tag: t.updateTipTag,
       time: 'Today',
       icon: Sprout,
       color: 'purple',
@@ -360,11 +360,11 @@ export const LandingAuth: React.FC = () => {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-green-950">
-                  i KISAN
+                  {t.appTitle}
                 </span>
               </div>
               <p className="text-[11px] sm:text-xs text-green-700 font-medium hidden sm:block">
-                AI Agronomy, Crop Doctor & Farmer Distress Early-Warning System
+                {t.appSubtitle}
               </p>
             </div>
           </div>
@@ -424,26 +424,38 @@ export const LandingAuth: React.FC = () => {
           <div className="lg:col-span-6 xl:col-span-6 bg-white rounded-3xl border border-green-200/90 shadow-xl shadow-green-950/5 p-6 sm:p-8 backdrop-blur-md">
             
             {/* Header / Intro inside Auth Card */}
-            <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-green-100">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-4 border-b border-green-100">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-green-100 text-green-800 flex items-center justify-center font-bold">
+                <div className="w-11 h-11 rounded-2xl bg-green-100/90 border border-green-200 text-green-800 flex items-center justify-center font-bold shadow-sm shrink-0">
                   <Leaf className="w-5 h-5 text-green-700" />
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-black text-green-950 tracking-tight">
-                    {authTab === 'login' ? 'Farmer Portal Login' : 'New Farmer Registration'}
-                  </h2>
-                  <p className="text-xs text-slate-500 font-medium">
+                  <div className="flex items-center gap-2">
+                    <h2 className="text-xl sm:text-2xl font-black text-green-950 tracking-tight">
+                      {authTab === 'login' ? t.farmerPortalLoginTitle : t.newFarmerRegTitle}
+                    </h2>
+                  </div>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">
                     {authTab === 'login'
-                      ? 'Enter your registered mobile number or email to access your farm'
-                      : 'Join i KISAN for localized crop advisory & distress mitigation'}
+                      ? t.loginSubtext
+                      : t.regSubtext}
                   </p>
                 </div>
               </div>
+              <div className="self-start sm:self-center">
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
+                  authTab === 'login'
+                    ? 'bg-green-100 text-green-800 border border-green-300'
+                    : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                }`}>
+                  <span className={`w-2 h-2 rounded-full ${authTab === 'login' ? 'bg-green-600' : 'bg-emerald-600'}`} />
+                  {authTab === 'login' ? t.loginTabBtn : t.signUpTabBtn}
+                </span>
+              </div>
             </div>
 
-            {/* TWO TABS: LOGIN vs SIGN UP */}
-            <div className="flex bg-slate-100 p-1.5 rounded-2xl mb-6">
+            {/* TWO TABS: LOGIN vs SIGN UP (High Visibility Switcher) */}
+            <div className="p-1.5 bg-slate-100/90 rounded-2xl mb-6 border border-slate-200/80 shadow-inner grid grid-cols-2 gap-1.5">
               <button
                 id="tab-login-btn"
                 type="button"
@@ -451,14 +463,19 @@ export const LandingAuth: React.FC = () => {
                   setAuthTab('login');
                   setLoginError('');
                 }}
-                className={`flex-1 py-2.5 text-xs sm:text-sm font-extrabold rounded-xl transition-all flex items-center justify-center gap-2 ${
+                className={`py-3 px-4 text-xs sm:text-sm font-extrabold rounded-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer select-none ${
                   authTab === 'login'
-                    ? 'bg-white text-green-900 shadow-sm border border-green-200/60'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white text-green-950 shadow-md shadow-slate-200 border border-green-200 ring-2 ring-green-600/20'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                 }`}
               >
-                <UserCheck className="w-4 h-4 text-green-700" />
-                <span>Login</span>
+                <div className={`p-1 rounded-lg ${authTab === 'login' ? 'bg-green-100 text-green-800' : 'text-slate-500'}`}>
+                  <UserCheck className="w-4 h-4" />
+                </div>
+                <span className="tracking-tight">{t.loginTabBtn}</span>
+                {authTab === 'login' && (
+                  <span className="ml-auto w-2 h-2 rounded-full bg-green-600 hidden sm:inline-block" />
+                )}
               </button>
 
               <button
@@ -468,14 +485,19 @@ export const LandingAuth: React.FC = () => {
                   setAuthTab('signup');
                   setRegErrors({});
                 }}
-                className={`flex-1 py-2.5 text-xs sm:text-sm font-extrabold rounded-xl transition-all flex items-center justify-center gap-2 ${
+                className={`py-3 px-4 text-xs sm:text-sm font-extrabold rounded-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer select-none ${
                   authTab === 'signup'
-                    ? 'bg-white text-green-900 shadow-sm border border-green-200/60'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white text-green-950 shadow-md shadow-slate-200 border border-green-200 ring-2 ring-green-600/20'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                 }`}
               >
-                <Sprout className="w-4 h-4 text-green-700" />
-                <span>Sign Up (Farmer)</span>
+                <div className={`p-1 rounded-lg ${authTab === 'signup' ? 'bg-emerald-100 text-emerald-800' : 'text-slate-500'}`}>
+                  <Sprout className="w-4 h-4" />
+                </div>
+                <span className="tracking-tight">{t.signUpTabBtn}</span>
+                {authTab === 'signup' && (
+                  <span className="ml-auto w-2 h-2 rounded-full bg-emerald-600 hidden sm:inline-block" />
+                )}
               </button>
             </div>
 
@@ -493,7 +515,7 @@ export const LandingAuth: React.FC = () => {
                 {/* Email or Mobile */}
                 <div>
                   <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                    Email OR Mobile Number <span className="text-red-500">*</span>
+                    {t.emailOrMobile} <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
                     <input
@@ -509,7 +531,7 @@ export const LandingAuth: React.FC = () => {
                     </div>
                   </div>
                   <p className="text-[11px] text-slate-500 mt-1">
-                    Enter your 10-digit registered mobile number or email ID.
+                    {t.emailOrMobileHelper}
                   </p>
                 </div>
 
@@ -517,14 +539,14 @@ export const LandingAuth: React.FC = () => {
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
                     <label className="block text-xs font-bold text-slate-800">
-                      Password <span className="text-red-500">*</span>
+                      {t.passwordLabel} <span className="text-red-500">*</span>
                     </label>
                     <button
                       type="button"
                       onClick={() => setIsForgotModalOpen(true)}
                       className="text-xs font-bold text-green-700 hover:text-green-900 hover:underline cursor-pointer"
                     >
-                      Forgot Password?
+                      {t.forgotPasswordLink}
                     </button>
                   </div>
                   <div className="relative">
@@ -557,26 +579,37 @@ export const LandingAuth: React.FC = () => {
                   {isLoggingIn ? (
                     <>
                       <RefreshCw className="w-4 h-4 animate-spin" />
-                      <span>Verifying Farm Credentials...</span>
+                      <span>{t.verifyingCredentials}</span>
                     </>
                   ) : (
                     <>
-                      <span>Login to Dashboard</span>
+                      <span>{t.loginButton}</span>
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}
                 </button>
 
+                {/* 1-Click Quick Demo Login */}
+                <button
+                  id="quick-demo-login-btn"
+                  type="button"
+                  onClick={handleQuickDemoLogin}
+                  className="w-full py-2.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 font-bold rounded-2xl text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Sparkles className="w-4 h-4 text-emerald-600" />
+                  <span>{t.oneClickDemoLogin}</span>
+                </button>
+
                 {/* Switch to Register footer note */}
                 <div className="text-center pt-3 border-t border-slate-100">
                   <p className="text-xs text-slate-600">
-                    Don't have an account yet?{' '}
+                    {t.dontHaveAccountYet}{' '}
                     <button
                       type="button"
                       onClick={() => setAuthTab('signup')}
                       className="font-bold text-green-700 hover:text-green-900 hover:underline cursor-pointer"
                     >
-                      Register your farm here
+                      {t.registerFarmHere}
                     </button>
                   </p>
                 </div>
@@ -601,13 +634,13 @@ export const LandingAuth: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-1.5 text-xs font-extrabold text-green-900 uppercase tracking-wider mb-2.5 pb-1 border-b border-green-100">
                     <UserCheck className="w-3.5 h-3.5 text-green-600" />
-                    <span>1. Farmer Personal Details</span>
+                    <span>{t.secPersonalDetails}</span>
                   </div>
 
                   {/* Full Name */}
                   <div className="mb-3">
                     <label className="block text-xs font-bold text-slate-800 mb-1">
-                      Full Name <span className="text-red-500">*</span>
+                      {t.fullNameLabel} <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="reg-fullname"
@@ -624,7 +657,7 @@ export const LandingAuth: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Mobile Number <span className="text-red-500">*</span>
+                        {t.mobileLabel} <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="reg-mobile"
@@ -639,7 +672,7 @@ export const LandingAuth: React.FC = () => {
 
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Email Address <span className="text-slate-400 font-normal">(Optional)</span>
+                        {t.emailOptionalLabel}
                       </label>
                       <input
                         id="reg-email"
@@ -656,16 +689,16 @@ export const LandingAuth: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-3">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        State <span className="text-red-500">*</span>
+                        {t.stateLabel} <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="reg-state"
                         value={regData.state}
                         onChange={(e) => setRegData({ ...regData, state: e.target.value })}
-                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-green-600 focus:bg-white font-medium"
+                        className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 shadow-sm cursor-pointer"
                       >
                         {indianStates.map((st) => (
-                          <option key={st} value={st}>
+                          <option key={st} value={st} className="text-slate-900 font-medium py-1">
                             {st}
                           </option>
                         ))}
@@ -674,7 +707,7 @@ export const LandingAuth: React.FC = () => {
 
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        District <span className="text-red-500">*</span>
+                        {t.districtLabel} <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="reg-district"
@@ -689,7 +722,7 @@ export const LandingAuth: React.FC = () => {
 
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Village / Location <span className="text-red-500">*</span>
+                        {t.villageLabel} <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="reg-village"
@@ -707,7 +740,7 @@ export const LandingAuth: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Password <span className="text-red-500">*</span>
+                        {t.passwordLabel} <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
                         <input
@@ -731,7 +764,7 @@ export const LandingAuth: React.FC = () => {
 
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Confirm Password <span className="text-red-500">*</span>
+                        {t.repeatPassword} <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
                         <input
@@ -759,23 +792,23 @@ export const LandingAuth: React.FC = () => {
                 <div className="pt-3">
                   <div className="flex items-center gap-1.5 text-xs font-extrabold text-green-900 uppercase tracking-wider mb-2.5 pb-1 border-b border-green-100">
                     <Wheat className="w-3.5 h-3.5 text-green-600" />
-                    <span>2. Crop & Farm Field Details</span>
+                    <span>{t.secCropFieldDetails}</span>
                   </div>
 
                   {/* Main Crop & Other Crops */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Main Crop Name <span className="text-red-500">*</span>
+                        {t.mainCropLabel} <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="reg-main-crop"
                         value={regData.mainCrop}
                         onChange={(e) => setRegData({ ...regData, mainCrop: e.target.value })}
-                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-green-600 focus:bg-white font-medium"
+                        className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 shadow-sm cursor-pointer"
                       >
                         {cropNamesList.map((crop) => (
-                          <option key={crop} value={crop}>
+                          <option key={crop} value={crop} className="text-slate-900 font-medium py-1">
                             {crop}
                           </option>
                         ))}
@@ -784,7 +817,7 @@ export const LandingAuth: React.FC = () => {
 
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Other Crops <span className="text-slate-400 font-normal">(Optional)</span>
+                        {t.otherCropsLabel}
                       </label>
                       <input
                         id="reg-other-crops"
@@ -801,7 +834,7 @@ export const LandingAuth: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Farming Area (in Acres) <span className="text-red-500">*</span>
+                        {t.farmAreaLabel} <span className="text-red-500">*</span>
                       </label>
                       <input
                         id="reg-farm-area"
@@ -818,20 +851,20 @@ export const LandingAuth: React.FC = () => {
 
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Soil Type <span className="text-red-500">*</span>
+                        {t.soilTypeLabel} <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="reg-soil-type"
                         value={regData.soilType}
                         onChange={(e) => setRegData({ ...regData, soilType: e.target.value as any })}
-                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-green-600 focus:bg-white font-medium"
+                        className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 shadow-sm cursor-pointer"
                       >
-                        <option value="Loamy">Loamy Soil</option>
-                        <option value="Clayey">Clayey Soil</option>
-                        <option value="Sandy">Sandy Soil</option>
-                        <option value="Black">Black Soil (Regur)</option>
-                        <option value="Alluvial">Alluvial Soil</option>
-                        <option value="Red">Red & Yellow Soil</option>
+                        <option value="Loamy" className="text-slate-900 font-medium py-1">Loamy Soil</option>
+                        <option value="Clayey" className="text-slate-900 font-medium py-1">Clayey Soil</option>
+                        <option value="Sandy" className="text-slate-900 font-medium py-1">Sandy Soil</option>
+                        <option value="Black" className="text-slate-900 font-medium py-1">Black Soil</option>
+                        <option value="Alluvial" className="text-slate-900 font-medium py-1">Alluvial Soil</option>
+                        <option value="Red" className="text-slate-900 font-medium py-1">Red Soil</option>
                       </select>
                     </div>
                   </div>
@@ -840,35 +873,35 @@ export const LandingAuth: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Irrigation Type <span className="text-red-500">*</span>
+                        {t.irrigationTypeLabel} <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="reg-irrigation-type"
                         value={regData.irrigationType}
                         onChange={(e) => setRegData({ ...regData, irrigationType: e.target.value as any })}
-                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-green-600 focus:bg-white font-medium"
+                        className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 shadow-sm cursor-pointer"
                       >
-                        <option value="Borewell">Borewell / Tube Well</option>
-                        <option value="Canal">Canal Irrigation</option>
-                        <option value="Drip">Drip Micro-Irrigation</option>
-                        <option value="Sprinkler">Sprinkler System</option>
-                        <option value="Rainfed">Rainfed / Monsoon Dependent</option>
+                        <option value="Borewell" className="text-slate-900 font-medium py-1">Borewell</option>
+                        <option value="Canal" className="text-slate-900 font-medium py-1">Canal</option>
+                        <option value="Drip" className="text-slate-900 font-medium py-1">Drip Irrigation</option>
+                        <option value="Sprinkler" className="text-slate-900 font-medium py-1">Sprinkler</option>
+                        <option value="Rainfed" className="text-slate-900 font-medium py-1">Rainfed</option>
                       </select>
                     </div>
 
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Farming Type <span className="text-red-500">*</span>
+                        {t.farmingTypeLabel} <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="reg-farming-type"
                         value={regData.farmingType}
                         onChange={(e) => setRegData({ ...regData, farmingType: e.target.value as any })}
-                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-green-600 focus:bg-white font-medium"
+                        className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 shadow-sm cursor-pointer"
                       >
-                        <option value="Organic">100% Organic Farming</option>
-                        <option value="Conventional">Conventional / Chemical Farming</option>
-                        <option value="Mixed">Mixed / Natural Zero Budget Farming</option>
+                        <option value="Organic" className="text-slate-900 font-medium py-1">Organic Farming</option>
+                        <option value="Conventional" className="text-slate-900 font-medium py-1">Conventional Farming</option>
+                        <option value="Mixed" className="text-slate-900 font-medium py-1">Mixed Farming</option>
                       </select>
                     </div>
                   </div>
@@ -877,25 +910,25 @@ export const LandingAuth: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Current Crop Growth Stage <span className="text-red-500">*</span>
+                        {t.growthStageLabel} <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="reg-growth-stage"
                         value={regData.cropGrowthStage}
                         onChange={(e) => setRegData({ ...regData, cropGrowthStage: e.target.value as any })}
-                        className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-green-600 focus:bg-white font-medium"
+                        className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 shadow-sm cursor-pointer"
                       >
-                        <option value="Vegetative">Vegetative Growth</option>
-                        <option value="Flowering">Flowering Stage</option>
-                        <option value="Grain Filling">Grain Filling / Pod Formation</option>
-                        <option value="Maturity">Maturity / Ripening</option>
-                        <option value="Harvesting">Harvest Ready</option>
+                        <option value="Vegetative" className="text-slate-900 font-medium py-1">Vegetative</option>
+                        <option value="Flowering" className="text-slate-900 font-medium py-1">Flowering</option>
+                        <option value="Grain Filling" className="text-slate-900 font-medium py-1">Grain Filling</option>
+                        <option value="Maturity" className="text-slate-900 font-medium py-1">Maturity</option>
+                        <option value="Harvesting" className="text-slate-900 font-medium py-1">Harvest Ready</option>
                       </select>
                     </div>
 
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Expected Harvest Date <span className="text-slate-400 font-normal">(Optional)</span>
+                        {t.expectedHarvestLabel}
                       </label>
                       <input
                         id="reg-harvest-date"
@@ -922,7 +955,7 @@ export const LandingAuth: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      <span>Complete Registration & Open Dashboard</span>
+                      <span>{t.completeRegBtn}</span>
                       <Check className="w-4 h-4" />
                     </>
                   )}
@@ -930,13 +963,13 @@ export const LandingAuth: React.FC = () => {
 
                 <div className="text-center pt-2">
                   <p className="text-xs text-slate-600">
-                    Already have an account?{' '}
+                    {t.alreadyHaveAccountLogin}{' '}
                     <button
                       type="button"
                       onClick={() => setAuthTab('login')}
                       className="font-bold text-green-700 hover:text-green-900 hover:underline cursor-pointer"
                     >
-                      Login here
+                      {t.loginTabBtn}
                     </button>
                   </p>
                 </div>
@@ -967,10 +1000,10 @@ export const LandingAuth: React.FC = () => {
                 <div className="flex items-center justify-between gap-2">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                    <span>Real-time Agro-Advisory Bulletin</span>
+                    <span>{t.realtimeBulletinBadge}</span>
                   </div>
                   <span className="text-[11px] text-green-300/80 font-medium">
-                    Kharif 2026 Edition
+                    {t.kharifEditionTag}
                   </span>
                 </div>
 
@@ -1014,7 +1047,7 @@ export const LandingAuth: React.FC = () => {
                     ))}
                   </div>
                   <div className="text-[11px] text-emerald-300 font-medium">
-                    Smart India Hackathon • Dual Advisory Engine
+                    {t.sihEngineTag}
                   </div>
                 </div>
               </div>
@@ -1031,10 +1064,10 @@ export const LandingAuth: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-extrabold text-sm sm:text-base text-green-950">
-                      Live Farming Updates & Alerts
+                      {t.liveUpdatesTitle}
                     </h3>
                     <p className="text-[11px] text-slate-500">
-                      Weather, Mandi Rates, Government Schemes & Advisory
+                      {t.liveUpdatesSub}
                     </p>
                   </div>
                 </div>
@@ -1042,11 +1075,11 @@ export const LandingAuth: React.FC = () => {
                 {/* Filter Chips */}
                 <div className="flex flex-wrap items-center gap-1.5">
                   {[
-                    { id: 'all', label: 'All' },
-                    { id: 'weather', label: 'Weather' },
-                    { id: 'scheme', label: 'Schemes' },
-                    { id: 'market', label: 'Mandi' },
-                    { id: 'advisory', label: 'Advisory' },
+                    { id: 'all', label: t.filterAll },
+                    { id: 'weather', label: t.filterWeather },
+                    { id: 'scheme', label: t.filterSchemes },
+                    { id: 'market', label: t.filterMandi },
+                    { id: 'advisory', label: t.filterAdvisory },
                   ].map((filter) => (
                     <button
                       key={filter.id}
@@ -1104,16 +1137,16 @@ export const LandingAuth: React.FC = () => {
               {/* Bottom Quick Feature Badges */}
               <div className="mt-4 pt-3 border-t border-green-100 grid grid-cols-3 gap-2 text-center">
                 <div className="bg-slate-50 p-2 rounded-xl border border-slate-100">
-                  <p className="text-[10px] font-bold text-slate-500 uppercase">Languages</p>
-                  <p className="text-xs font-black text-green-900 mt-0.5">22 Indic AI</p>
+                  <p className="text-[10px] font-bold text-slate-500 uppercase">{t.badgeLanguages}</p>
+                  <p className="text-xs font-black text-green-900 mt-0.5">{t.badgeLanguagesVal}</p>
                 </div>
                 <div className="bg-slate-50 p-2 rounded-xl border border-slate-100">
-                  <p className="text-[10px] font-bold text-slate-500 uppercase">Network</p>
-                  <p className="text-xs font-black text-green-900 mt-0.5">2G / Lite Ready</p>
+                  <p className="text-[10px] font-bold text-slate-500 uppercase">{t.badgeNetwork}</p>
+                  <p className="text-xs font-black text-green-900 mt-0.5">{t.badgeNetworkVal}</p>
                 </div>
                 <div className="bg-slate-50 p-2 rounded-xl border border-slate-100">
-                  <p className="text-[10px] font-bold text-slate-500 uppercase">Officer SOS</p>
-                  <p className="text-xs font-black text-green-900 mt-0.5">Auto-Dispatch</p>
+                  <p className="text-[10px] font-bold text-slate-500 uppercase">{t.badgeSos}</p>
+                  <p className="text-xs font-black text-green-900 mt-0.5">{t.badgeSosVal}</p>
                 </div>
               </div>
 
@@ -1130,13 +1163,13 @@ export const LandingAuth: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <FarmerLogo className="w-5 h-5 text-green-700" />
-            <span className="font-bold text-green-950">i KISAN</span>
-            <span>— Agricultural Decision & Distress Mitigation Platform</span>
+            <span className="font-bold text-green-950">{t.appTitle}</span>
+            <span>{t.footerPlatformTag}</span>
           </div>
           <div className="flex items-center gap-4 text-[11px] font-semibold text-green-800">
-            <span>🌾 22 Regional Languages</span>
-            <span>🎙️ Voice AI Ready</span>
-            <span>⚡ Low Bandwidth Friendly</span>
+            <span>{t.footerBadge1}</span>
+            <span>{t.footerBadge2}</span>
+            <span>{t.footerBadge3}</span>
           </div>
         </div>
       </footer>
@@ -1161,15 +1194,15 @@ export const LandingAuth: React.FC = () => {
               <Lock className="w-6 h-6" />
             </div>
 
-            <h3 className="text-lg font-bold text-green-950">Reset Farmer Password</h3>
+            <h3 className="text-lg font-bold text-green-950">{t.resetPasswordTitle}</h3>
             <p className="text-xs text-slate-500 mt-1">
-              Enter your registered mobile number or email to receive a 4-digit SMS OTP reset code.
+              {t.resetPasswordSubtext}
             </p>
 
             {forgotStatus === 'sent' ? (
               <div className="my-6 p-4 rounded-2xl bg-green-50 border border-green-200 text-center space-y-2">
                 <CheckCircle2 className="w-8 h-8 text-green-600 mx-auto" />
-                <p className="text-xs font-bold text-green-900">OTP Sent Successfully!</p>
+                <p className="text-xs font-bold text-green-900">{t.otpSentSuccess}</p>
                 <p className="text-[11px] text-green-700">
                   A verification code has been sent to <strong>{forgotIdentifier || 'your mobile'}</strong>. Use demo OTP <strong>8492</strong> to log in.
                 </p>
@@ -1183,14 +1216,14 @@ export const LandingAuth: React.FC = () => {
                   }}
                   className="mt-3 px-4 py-2 bg-green-700 hover:bg-green-800 text-white text-xs font-bold rounded-xl w-full"
                 >
-                  Return to Login
+                  {t.returnToLoginBtn}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleForgotPasswordSubmit} className="space-y-4 my-6">
                 <div>
                   <label className="block text-xs font-bold text-slate-800 mb-1">
-                    Mobile Number or Email
+                    {t.emailOrMobile}
                   </label>
                   <input
                     type="text"
@@ -1210,10 +1243,10 @@ export const LandingAuth: React.FC = () => {
                   {forgotStatus === 'sending' ? (
                     <>
                       <RefreshCw className="w-4 h-4 animate-spin" />
-                      <span>Sending SMS OTP...</span>
+                      <span>{t.sendingSmsOtp}</span>
                     </>
                   ) : (
-                    <span>Send Reset OTP</span>
+                    <span>{t.sendResetOtpBtn}</span>
                   )}
                 </button>
               </form>
@@ -1225,7 +1258,7 @@ export const LandingAuth: React.FC = () => {
                 onClick={() => setIsForgotModalOpen(false)}
                 className="text-xs font-bold text-slate-500 hover:text-slate-800"
               >
-                Cancel and back to login
+                {t.cancelBackToLogin}
               </button>
             </div>
           </div>

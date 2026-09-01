@@ -115,6 +115,123 @@ export interface TranslationSchema {
   voiceSpeed: string;
   saveChanges: string;
   sihEngineTag: string;
+  rainfallDeviation: string;
+  rainfallDeviationVal: string;
+  mandiPriceDrop: string;
+  mandiPriceDropVal: string;
+  kccLoanProximity: string;
+  kccLoanProximityVal: string;
+  cropStressIndex: string;
+  cropStressIndexVal: string;
+  distressCardSubtitle: string;
+  simulateVectorsBtn: string;
+  officerAlertSentLogged: string;
+  officerLabel: string;
+  farmingAdvice1: string;
+  farmingAdvice2: string;
+  farmingAdvice3: string;
+  compareMandiPricesBtn: string;
+  checkCropHealthLabBtn: string;
+  openDiseaseScanner: string;
+  vegetativeStageAcres: string;
+  selectLanguage: string;
+  farmerPortalLoginTitle: string;
+  newFarmerRegTitle: string;
+  loginSubtext: string;
+  regSubtext: string;
+  loginTabBtn: string;
+  signUpTabBtn: string;
+  emailOrMobileLabel: string;
+  emailOrMobileHelper: string;
+  passwordLabel: string;
+  forgotPasswordLink: string;
+  verifyingCredentials: string;
+  oneClickDemoLogin: string;
+  dontHaveAccountYet: string;
+  registerFarmHere: string;
+  secPersonalDetails: string;
+  secCropFieldDetails: string;
+  fullNameLabel: string;
+  mobileLabel: string;
+  emailOptionalLabel: string;
+  stateLabel: string;
+  districtLabel: string;
+  villageLabel: string;
+  repeatPassword: string;
+  mainCropLabel: string;
+  otherCropsLabel: string;
+  farmAreaLabel: string;
+  soilTypeLabel: string;
+  irrigationTypeLabel: string;
+  farmingTypeLabel: string;
+  growthStageLabel: string;
+  expectedHarvestLabel: string;
+  loamySoil?: string;
+  clayeySoil?: string;
+  sandySoil?: string;
+  blackSoil?: string;
+  alluvialSoil?: string;
+  redSoil?: string;
+  borewellIrrigation?: string;
+  canalIrrigation?: string;
+  dripIrrigation?: string;
+  sprinklerIrrigation?: string;
+  rainfedIrrigation?: string;
+  organicFarming?: string;
+  conventionalFarming?: string;
+  mixedFarming?: string;
+  vegetativeStage?: string;
+  floweringStage?: string;
+  grainFillingStage?: string;
+  maturityStage?: string;
+  harvestReadyStage?: string;
+  completeRegBtn: string;
+  alreadyHaveAccountLogin: string;
+  realtimeBulletinBadge: string;
+  kharifEditionTag: string;
+  liveUpdatesTitle: string;
+  liveUpdatesSub: string;
+  filterAll: string;
+  filterWeather: string;
+  filterSchemes: string;
+  filterMandi: string;
+  filterAdvisory: string;
+  badgeLanguages: string;
+  badgeLanguagesVal: string;
+  badgeNetwork: string;
+  badgeNetworkVal: string;
+  badgeSos: string;
+  badgeSosVal: string;
+  footerPlatformTag: string;
+  footerBadge1: string;
+  footerBadge2: string;
+  footerBadge3: string;
+  resetPasswordTitle: string;
+  resetPasswordSubtext: string;
+  otpSentSuccess: string;
+  otpSentDetails: string;
+  returnToLoginBtn: string;
+  sendResetOtpBtn: string;
+  sendingSmsOtp: string;
+  cancelBackToLogin: string;
+  updateWeatherTag: string;
+  updateWeatherTitle: string;
+  updateWeatherMsg: string;
+  updateSchemeTag: string;
+  updateSchemeTitle: string;
+  updateSchemeMsg: string;
+  updateMandiTag: string;
+  updateMandiTitle: string;
+  updateMandiMsg: string;
+  updateInsuranceTag: string;
+  updateInsuranceTitle: string;
+  updateInsuranceMsg: string;
+  updatePestTag: string;
+  updatePestTitle: string;
+  updatePestMsg: string;
+  updateTipTag: string;
+  updateTipTitle: string;
+  updateTipMsg: string;
 }
 
 export const translations: Record<LanguageCode, TranslationSchema> = {
@@ -233,6 +350,104 @@ export const translations: Record<LanguageCode, TranslationSchema> = {
     voiceSpeed: 'Voice Assistant Speech Speed',
     saveChanges: 'Save Preferences',
     sihEngineTag: 'Smart India Hackathon Prototype • Dual Advisory & Distress Engine',
+    rainfallDeviation: 'Rainfall Deviation',
+    rainfallDeviationVal: '-30% below avg',
+    mandiPriceDrop: 'Mandi Price Drop',
+    mandiPriceDropVal: '-18% last 7d',
+    kccLoanProximity: 'KCC Loan Proximity',
+    kccLoanProximityVal: 'Moderate (Due 45d)',
+    cropStressIndex: 'Crop Stress Index',
+    cropStressIndexVal: 'Healthy (Vegetative)',
+    distressCardSubtitle: 'Multi-factor risk calculated based on environmental deficit & mandi drops',
+    simulateVectorsBtn: 'Simulate Factor Vectors & Threshold',
+    officerAlertSentLogged: 'Local Agri Officer Alert: Sent & Logged',
+    officerLabel: 'Officer',
+    farmingAdvice1: 'Avoid irrigation today because heavy rainfall (72% prob) is expected tomorrow.',
+    farmingAdvice2: 'Current mandi prices are higher by ₹100/qtl in Attabira APMC (₹2,450 vs ₹2,350).',
+    farmingAdvice3: 'Monitor lower leaves for early brown spots; spray neem oil if humid weather persists.',
+    compareMandiPricesBtn: 'Compare Mandi Prices',
+    checkCropHealthLabBtn: 'Check Crop Health Lab',
+    openDiseaseScanner: 'Open AI Disease Scanner',
+    vegetativeStageAcres: 'Vegetative Stage • 3.0 Acres',
+    selectLanguage: 'Select Language / भाषा',
+    farmerPortalLoginTitle: 'Farmer Portal Login',
+    newFarmerRegTitle: 'New Farmer Registration',
+    loginSubtext: 'Enter your registered mobile number or email to access your farm',
+    regSubtext: 'Join i KISAN for localized crop advisory & distress mitigation',
+    loginTabBtn: 'Login',
+    signUpTabBtn: 'Sign Up (Farmer)',
+    emailOrMobileLabel: 'Email OR Mobile Number',
+    emailOrMobileHelper: 'Enter your 10-digit registered mobile number or email ID.',
+    passwordLabel: 'Password',
+    forgotPasswordLink: 'Forgot Password?',
+    verifyingCredentials: 'Verifying Farm Credentials...',
+    oneClickDemoLogin: '1-Click Demo Login (Pranab • 3.5 Acres)',
+    dontHaveAccountYet: "Don't have an account yet?",
+    registerFarmHere: 'Register your farm here',
+    secPersonalDetails: '1. Farmer Personal Details',
+    secCropFieldDetails: '2. Crop & Farm Field Details',
+    fullNameLabel: 'Full Name',
+    mobileLabel: 'Mobile Number',
+    emailOptionalLabel: 'Email Address (Optional)',
+    stateLabel: 'State',
+    districtLabel: 'District',
+    villageLabel: 'Village / Location',
+    repeatPassword: 'Confirm Password',
+    mainCropLabel: 'Main Crop Name',
+    otherCropsLabel: 'Other Crops (Optional)',
+    farmAreaLabel: 'Farming Area (in Acres)',
+    soilTypeLabel: 'Soil Type',
+    irrigationTypeLabel: 'Irrigation Type',
+    farmingTypeLabel: 'Farming Type',
+    growthStageLabel: 'Current Crop Growth Stage',
+    expectedHarvestLabel: 'Expected Harvest Date (Optional)',
+    completeRegBtn: 'Complete Registration & Open Dashboard',
+    alreadyHaveAccountLogin: 'Already have an account?',
+    realtimeBulletinBadge: 'Real-time Agro-Advisory Bulletin',
+    kharifEditionTag: 'Kharif 2026 Edition',
+    liveUpdatesTitle: 'Live Farming Updates & Alerts',
+    liveUpdatesSub: 'Weather, Mandi Rates, Government Schemes & Advisory',
+    filterAll: 'All',
+    filterWeather: 'Weather',
+    filterSchemes: 'Schemes',
+    filterMandi: 'Mandi',
+    filterAdvisory: 'Advisory',
+    badgeLanguages: 'Languages',
+    badgeLanguagesVal: '22 Indic AI',
+    badgeNetwork: 'Network',
+    badgeNetworkVal: '2G / Lite Ready',
+    badgeSos: 'Officer SOS',
+    badgeSosVal: 'Auto-Dispatch',
+    footerPlatformTag: '— Agricultural Decision & Distress Mitigation Platform',
+    footerBadge1: '🌾 22 Regional Languages',
+    footerBadge2: '🎙️ Voice AI Ready',
+    footerBadge3: '⚡ Low Bandwidth Friendly',
+    resetPasswordTitle: 'Reset Farmer Password',
+    resetPasswordSubtext: 'Enter your registered mobile number or email to receive a 4-digit SMS OTP reset code.',
+    otpSentSuccess: 'OTP Sent Successfully!',
+    otpSentDetails: 'A verification code has been sent. Use demo OTP 8492 to log in.',
+    returnToLoginBtn: 'Return to Login',
+    sendResetOtpBtn: 'Send Reset OTP',
+    sendingSmsOtp: 'Sending SMS OTP...',
+    cancelBackToLogin: 'Cancel and back to login',
+    updateWeatherTag: 'Urgent',
+    updateWeatherTitle: 'Heavy Rainfall Warning',
+    updateWeatherMsg: 'Heavy rainfall and thunderstorm expected in your region tomorrow. Postpone canal irrigation and spraying.',
+    updateSchemeTag: 'Benefit',
+    updateSchemeTitle: 'PM-KISAN 17th Installment',
+    updateSchemeMsg: 'PM-KISAN update: e-KYC deadline extended. ₹2,000 direct transfer scheduled for active farmers.',
+    updateMandiTag: 'Bullish',
+    updateMandiTitle: 'Tomato & Paddy Rates Surge',
+    updateMandiMsg: 'Tomato prices increased by 12% in nearby mandis (₹2,450/qtl). High arrival demand window.',
+    updateInsuranceTag: 'Important',
+    updateInsuranceTitle: 'PMFBY Kharif Deadline',
+    updateInsuranceMsg: 'Apply for crop insurance before the deadline (31st August). Ensure localized loss claims registered within 72h.',
+    updatePestTag: 'Pest Caution',
+    updatePestTitle: 'Paddy Stem Borer Alert',
+    updatePestMsg: 'High humidity favors yellow stem borer in vegetative stage. Install pheromone traps at 5 traps/acre.',
+    updateTipTag: 'Advisory',
+    updateTipTitle: 'Split Nitrogen Application',
+    updateTipMsg: 'Apply remaining 25% Nitrogen top-dressing at panicle initiation for 14% higher grain kernel weight.',
   },
   hi: {
     appTitle: 'स्मार्ट कृषि',
@@ -349,6 +564,104 @@ export const translations: Record<LanguageCode, TranslationSchema> = {
     voiceSpeed: 'सहायक की आवाज गति',
     saveChanges: 'सेटिंग्स सहेजें',
     sihEngineTag: 'स्मार्ट इंडिया हैकथॉन प्रोटोटाइप • फसल परामर्श एवं संकट चेतावनी प्रणाली',
+    rainfallDeviation: 'वर्षा विचलन / कमी',
+    rainfallDeviationVal: 'औसत से -30% कम',
+    mandiPriceDrop: 'मंडी भाव में गिरावट',
+    mandiPriceDropVal: 'पिछले 7 दिन में -18%',
+    kccLoanProximity: 'केसीसी ऋण भुगतान निकटता',
+    kccLoanProximityVal: 'मध्यम (45 दिन में देय)',
+    cropStressIndex: 'फसल तनाव सूचकांक',
+    cropStressIndexVal: 'स्वस्थ (वानस्पतिक अवस्था)',
+    distressCardSubtitle: 'पर्यावरणीय कमी व मंडी भाव गिरावट पर आधारित बहु-कारक जोखिम गणना',
+    simulateVectorsBtn: 'जोखिम कारक व अलर्ट सीमा सिम्युलेट करें',
+    officerAlertSentLogged: 'स्थानीय कृषि अधिकारी अलर्ट: प्रेषित एवं दर्ज',
+    officerLabel: 'अधिकारी',
+    farmingAdvice1: 'आज सिंचाई न करें क्योंकि कल भारी वर्षा (72% संभावना) का अनुमान है।',
+    farmingAdvice2: 'अताबिरा मंडी में वर्तमान भाव ₹100/क्विंटल अधिक है (₹2,450 बनाम ₹2,350)।',
+    farmingAdvice3: 'निचली पत्तियों पर भूरे धब्बों की निगरानी करें; नमी रहने पर नीम के तेल का छिड़काव करें।',
+    compareMandiPricesBtn: 'मंडी भाव तुलना करें',
+    checkCropHealthLabBtn: 'फसल रोग लैब जांचें',
+    openDiseaseScanner: 'एआई रोग स्कैनर खोलें',
+    vegetativeStageAcres: 'वानस्पतिक अवस्था • 3.0 एकड़',
+    selectLanguage: 'भाषा चुनें / Select Language',
+    farmerPortalLoginTitle: 'किसान पोर्टल लॉगिन',
+    newFarmerRegTitle: 'नया किसान पंजीकरण',
+    loginSubtext: 'अपने खेत तक पहुँचने के लिए अपना पंजीकृत मोबाइल नंबर या ईमेल दर्ज करें',
+    regSubtext: 'स्थानीय फसल परामर्श एवं संकट निवारण हेतु i KISAN से जुड़ें',
+    loginTabBtn: 'लॉग इन',
+    signUpTabBtn: 'साइन अप (किसान)',
+    emailOrMobileLabel: 'ईमेल अथवा मोबाइल नंबर',
+    emailOrMobileHelper: 'अपना 10-अंकों का पंजीकृत मोबाइल नंबर या ईमेल दर्ज करें।',
+    passwordLabel: 'पासवर्ड',
+    forgotPasswordLink: 'पासवर्ड भूल गए?',
+    verifyingCredentials: 'किसान विवरण सत्यापित किया जा रहा है...',
+    oneClickDemoLogin: '1-क्लिक डेमो लॉगिन (प्रणब • 3.5 एकड़)',
+    dontHaveAccountYet: 'अभी तक कोई खाता नहीं है?',
+    registerFarmHere: 'यहाँ अपना खेत पंजीकृत करें',
+    secPersonalDetails: '1. किसान की व्यक्तिगत जानकारी',
+    secCropFieldDetails: '2. फसल एवं खेत का विवरण',
+    fullNameLabel: 'पूरा नाम',
+    mobileLabel: 'मोबाइल नंबर',
+    emailOptionalLabel: 'ईमेल पता (वैकल्पिक)',
+    stateLabel: 'राज्य',
+    districtLabel: 'जिला',
+    villageLabel: 'गाँव / पंचायत',
+    repeatPassword: 'पासवर्ड की पुष्टि करें',
+    mainCropLabel: 'मुख्य फसल का नाम',
+    otherCropsLabel: 'अन्य फसलें (वैकल्पिक)',
+    farmAreaLabel: 'खेती का क्षेत्रफल (एकड़ में)',
+    soilTypeLabel: 'मिट्टी का प्रकार',
+    irrigationTypeLabel: 'सिंचाई का साधन',
+    farmingTypeLabel: 'खेती का प्रकार',
+    growthStageLabel: 'फसल की वर्तमान वृद्धि अवस्था',
+    expectedHarvestLabel: 'अनुमानित कटाई तिथि (वैकल्पिक)',
+    completeRegBtn: 'पंजीकरण पूरा करें व डैशबोर्ड खोलें',
+    alreadyHaveAccountLogin: 'पहले से खाता मौजूद है?',
+    realtimeBulletinBadge: 'रीयल-टाइम कृषि परामर्श बुलेटिन',
+    kharifEditionTag: 'खरीफ 2026 संस्करण',
+    liveUpdatesTitle: 'लाइव कृषि समाचार व चेतावनियाँ',
+    liveUpdatesSub: 'मौसम, मंडी भाव, सरकारी योजनाएं एवं परामर्श',
+    filterAll: 'सभी',
+    filterWeather: 'मौसम',
+    filterSchemes: 'योजनाएं',
+    filterMandi: 'मंडी भाव',
+    filterAdvisory: 'परामर्श',
+    badgeLanguages: 'भाषाएं',
+    badgeLanguagesVal: '22 भारतीय भाषाएं',
+    badgeNetwork: 'नेटवर्क',
+    badgeNetworkVal: '2G / लाइट रेडी',
+    badgeSos: 'अधिकारी SOS',
+    badgeSosVal: 'ऑटो-अलर्ट प्रेषित',
+    footerPlatformTag: '— कृषि निर्णय एवं किसान संकट निवारण मंच',
+    footerBadge1: '🌾 22 क्षेत्रीय भाषाएं',
+    footerBadge2: '🎙️ आवाज एआई सक्षम',
+    footerBadge3: '⚡ कम इंटरनेट अनुकूल',
+    resetPasswordTitle: 'किसान पासवर्ड रीसेट करें',
+    resetPasswordSubtext: '4-अंकों का SMS OTP रीसेट कोड प्राप्त करने के लिए अपना पंजीकृत मोबाइल नंबर या ईमेल दर्ज करें।',
+    otpSentSuccess: 'ओटीपी सफलतापूर्वक भेजा गया!',
+    otpSentDetails: 'सत्यापन कोड भेज दिया गया है। लॉग इन के लिए डेमो ओटीपी 8492 का उपयोग करें।',
+    returnToLoginBtn: 'लॉगिन पर वापस जाएं',
+    sendResetOtpBtn: 'रीसेट ओटीपी भेजें',
+    sendingSmsOtp: 'एसएमएस ओटीपी भेजा जा रहा है...',
+    cancelBackToLogin: 'रद्द करें और लॉगिन पर लौटें',
+    updateWeatherTag: 'अति आवश्यक',
+    updateWeatherTitle: 'भारी वर्षा की चेतावनी',
+    updateWeatherMsg: 'कल आपके क्षेत्र में भारी वर्षा और गरज के साथ बौछारें पड़ने का अनुमान है। सिंचाई और कीटनाशक छिड़काव स्थगित करें।',
+    updateSchemeTag: 'लाभ',
+    updateSchemeTitle: 'पीएम-किसान 17वीं किस्त',
+    updateSchemeMsg: 'पीएम-किसान ई-केवाईसी की अंतिम तिथि बढ़ाई गई। सक्रिय किसानों के खातों में ₹2,000 की राशि भेजी जाएगी।',
+    updateMandiTag: 'तेजी',
+    updateMandiTitle: 'टमाटर व धान के भाव में उछाल',
+    updateMandiMsg: 'पास की मंडियों में टमाटर के भाव में 12% की बढ़ोतरी (₹2,450/क्विंटल)। बिक्री का अच्छा अवसर।',
+    updateInsuranceTag: 'महत्वपूर्ण',
+    updateInsuranceTitle: 'पीएम फसल बीमा (PMFBY) अंतिम तिथि',
+    updateInsuranceMsg: 'फसल बीमा हेतु समय पर आवेदन करें। स्थानीय फसल क्षति की सूचना 72 घंटे के भीतर दर्ज कराएं।',
+    updatePestTag: 'कीट चेतावनी',
+    updatePestTitle: 'धान तना छेदक कीट का अलर्ट',
+    updatePestMsg: 'उच्च आर्द्रता में पीला तना छेदक कीट का प्रकोप संभव है। प्रति एकड़ 5 फेरोमोन ट्रैप लगाएं।',
+    updateTipTag: 'परामर्श',
+    updateTipTitle: 'नाइट्रोजन की सही मात्रा',
+    updateTipMsg: 'बालियां निकलने के समय बची हुई 25% नाइट्रोजन की टॉप-ड्रेसिंग करें, जिससे दाने 14% अधिक वजनी होंगे।',
   },
   or: {
     appTitle: 'ସ୍ମାର୍ଟ କୃଷି',
@@ -465,6 +778,104 @@ export const translations: Record<LanguageCode, TranslationSchema> = {
     voiceSpeed: 'ଭଏସ ସ୍ପୀଡ୍',
     saveChanges: 'ସେଟିଙ୍ଗ୍ସ ସାଇତି ରଖନ୍ତୁ',
     sihEngineTag: 'ସ୍ମାର୍ଟ ଇଣ୍ଡିଆ ହ୍ୟାକାଥନ୍ ପ୍ରୋଟୋଟାଇପ୍ • କୃଷି ପରାମର୍ଶ ଓ ସଙ୍କଟ ଚେତାବନୀ',
+    rainfallDeviation: 'ବର୍ଷାର ଅଭାବ / ବିଚ୍ୟୁତି',
+    rainfallDeviationVal: 'ହାରାହାରି ଠାରୁ -୩୦% କମ',
+    mandiPriceDrop: 'ମଣ୍ଡି ଦରରେ ହ୍ରାସ',
+    mandiPriceDropVal: 'ଗତ ୭ ଦିନରେ -୧୮%',
+    kccLoanProximity: 'କେସିସି ଋଣ ପରିଶୋଧ ନିକଟତା',
+    kccLoanProximityVal: 'ମଧ୍ୟମ (୪୫ ଦିନରେ ଦେୟ)',
+    cropStressIndex: 'ଫସଲ ଚାପ ସୂଚକାଙ୍କ',
+    cropStressIndexVal: 'ସୁସ୍ଥ (ବୃଦ୍ଧି ଅବସ୍ଥା)',
+    distressCardSubtitle: 'ପାଣିପାଗ ଅଭାବ ଓ ମଣ୍ଡି ଦର ହ୍ରାସ ଉପରେ ଆଧାରିତ ସଙ୍କଟ ଗଣନା',
+    simulateVectorsBtn: 'ସଙ୍କଟ କାରକ ଓ ସୀମା ପରିବର୍ତ୍ତନ କରନ୍ତୁ',
+    officerAlertSentLogged: 'ସ୍ଥାନୀୟ କୃଷି ଅଧିକାରୀ ଆଲର୍ଟ: ପ୍ରେରିତ ଓ ରେକର୍ଡ ହୋଇଛି',
+    officerLabel: 'ଅଧିକାରୀ',
+    farmingAdvice1: 'ଆଜି ଜଳସେଚନ କରନ୍ତୁ ନାହିଁ କାରଣ ଆସନ୍ତାକାଲି ପ୍ରବଳ ବର୍ଷା (୭୨% ସମ୍ଭାବନା) ହୋଇପାରେ।',
+    farmingAdvice2: 'ଅତାବିରା ମଣ୍ଡିରେ ବର୍ତ୍ତମାନ ଦର କ୍ୱିଣ୍ଟାଲ ପିଛା ₹୧୦୦ ଅଧିକ ଅଛି (₹୨,୪୫୦ ବନାମ ₹୨,୩୫୦)।',
+    farmingAdvice3: 'ତଳ ପତ୍ରଗୁଡ଼ିକରେ ବାଦାମୀ ଦାଗ ଲକ୍ଷ୍ୟ କରନ୍ତୁ; ଆର୍ଦ୍ର ପାଣିପାଗ ରହିଲେ ନିମ୍ବ ତେଲ ସ୍ପ୍ରେ କରନ୍ତୁ।',
+    compareMandiPricesBtn: 'ମଣ୍ଡି ଦର ତୁଳନା କରନ୍ତୁ',
+    checkCropHealthLabBtn: 'ଫସଲ ରୋଗ ଯାଞ୍ଚ କରନ୍ତୁ',
+    openDiseaseScanner: 'ଏଆଇ ରୋଗ ସ୍କାନର ଖୋଲନ୍ତୁ',
+    vegetativeStageAcres: 'ବୃଦ୍ଧି ଅବସ୍ଥା • ୩.୦ ଏକର',
+    selectLanguage: 'ଭାଷା ବାଛନ୍ତୁ / Select Language',
+    farmerPortalLoginTitle: 'କୃଷକ ପୋର୍ଟାଲ ଲଗ୍-ଇନ୍',
+    newFarmerRegTitle: 'ନୂତନ କୃଷକ ପଞ୍ଜୀକରଣ',
+    loginSubtext: 'ଆପଣଙ୍କ କ୍ଷେତ ବିବରଣୀ ପାଇବା ପାଇଁ ପଞ୍ଜୀକୃତ ମୋବାଇଲ୍ ନମ୍ବର କିମ୍ବା ଇମେଲ୍ ଦିଅନ୍ତୁ',
+    regSubtext: 'ଫସଲ ପରାମର୍ଶ ଓ ସଙ୍କଟ ସହାୟତା ପାଇଁ i KISAN ସହିତ ଯୋଡ଼ି ହୁଅନ୍ତୁ',
+    loginTabBtn: 'ଲଗ୍ ଇନ୍',
+    signUpTabBtn: 'ସାଇନ୍ ଅପ୍ (କୃଷକ)',
+    emailOrMobileLabel: 'ଇମେଲ୍ କିମ୍ବା ମୋବାଇଲ୍ ନମ୍ବର',
+    emailOrMobileHelper: 'ଆପଣଙ୍କ ୧୦-ଅଙ୍କ ବିଶିଷ୍ଟ ମୋବାଇଲ୍ ନମ୍ବର କିମ୍ବା ଇମେଲ୍ ଲେଖନ୍ତୁ।',
+    passwordLabel: 'ପାସୱାର୍ଡ',
+    forgotPasswordLink: 'ପାସୱାର୍ଡ ଭୁଲିଗଲେ କି?',
+    verifyingCredentials: 'ଚାଷୀ ବିବରଣୀ ଯାଞ୍ଚ ହେଉଛି...',
+    oneClickDemoLogin: '୧-କ୍ଲିକ୍ ଡେମୋ ଲଗଇନ୍ (ପ୍ରଣବ • ୩.୫ ଏକର)',
+    dontHaveAccountYet: 'ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଖାତା ନାହିଁ କି?',
+    registerFarmHere: 'ଏଠାରେ ଆପଣଙ୍କ ଜମି ପଞ୍ଜୀକରଣ କରନ୍ତୁ',
+    secPersonalDetails: '୧. ଚାଷୀଙ୍କ ବ୍ୟକ୍ତିଗତ ବିବରଣୀ',
+    secCropFieldDetails: '୨. ଫସଲ ଏବଂ ଚାଷ ଜମିର ବିବରଣୀ',
+    fullNameLabel: 'ସମ୍ପୂର୍ଣ୍ଣ ନାମ',
+    mobileLabel: 'ମୋବାଇଲ୍ ନମ୍ବର',
+    emailOptionalLabel: 'ଇମେଲ୍ ଠିକଣା (ଇଚ୍ଛାଧୀନ)',
+    stateLabel: 'ରାଜ୍ୟ',
+    districtLabel: 'ଜିଲ୍ଲା',
+    villageLabel: 'ଗ୍ରାମ / ପଞ୍ଚାୟତ',
+    repeatPassword: 'ପାସୱାର୍ଡ ନିଶ୍ଚିତ କରନ୍ତୁ',
+    mainCropLabel: 'ମୁଖ୍ୟ ଫସଲ ନାମ',
+    otherCropsLabel: 'ଅନ୍ୟାନ୍ୟ ଫସଲ (ଇଚ୍ଛାଧୀନ)',
+    farmAreaLabel: 'ଚାଷ ଜମିର କ୍ଷେତ୍ରଫଳ (ଏକରରେ)',
+    soilTypeLabel: 'ମାଟିର ପ୍ରକାର',
+    irrigationTypeLabel: 'ଜଳସେଚନ ବ୍ୟବସ୍ଥା',
+    farmingTypeLabel: 'ଚାଷ ପ୍ରଣାଳୀ',
+    growthStageLabel: 'ଫସଲର ବର୍ତ୍ତମାନ ବୃଦ୍ଧି ଅବସ୍ଥା',
+    expectedHarvestLabel: 'ସମ୍ଭାବ୍ୟ ଅମଳ ତାରିଖ (ଇଚ୍ଛାଧୀନ)',
+    completeRegBtn: 'ପଞ୍ଜୀକରଣ ସମ୍ପୂର୍ଣ୍ଣ କରନ୍ତୁ ଏବଂ ଡ୍ୟାସବୋର୍ଡ୍ ଖୋଲନ୍ତୁ',
+    alreadyHaveAccountLogin: 'ପୂର୍ବରୁ ଖାତା ଅଛି କି?',
+    realtimeBulletinBadge: 'ରିଅଲ୍-ଟାଇମ୍ କୃଷି ପରାମର୍ଶ ବୁଲେଟିନ୍',
+    kharifEditionTag: 'ଖରିଫ୍ ୨୦୨୬ ସଂସ୍କରଣ',
+    liveUpdatesTitle: 'ଲାଇଭ୍ କୃଷି ଖବର ଓ ସୂଚନା',
+    liveUpdatesSub: 'ପାଣିପାଗ, ମଣ୍ଡି ଦର, ସରକାରୀ ଯୋଜନା ଓ ପରାମର୍ଶ',
+    filterAll: 'ସମସ୍ତ',
+    filterWeather: 'ପାଣିପାଗ',
+    filterSchemes: 'ଯୋଜନା',
+    filterMandi: 'ମଣ୍ଡି ଦର',
+    filterAdvisory: 'ପରାମର୍ଶ',
+    badgeLanguages: 'ଭାଷା',
+    badgeLanguagesVal: '୨୨ଟି ଭାରତୀୟ ଭାଷା',
+    badgeNetwork: 'ନେଟୱର୍କ',
+    badgeNetworkVal: '୨ଜି / ଲାଇଟ୍ ସୁବିଧା',
+    badgeSos: 'ଅଧିକାରୀ SOS',
+    badgeSosVal: 'ସ୍ୱୟଂଚାଳିତ ଆଲର୍ଟ',
+    footerPlatformTag: '— କୃଷି ନିଷ୍ପତ୍ତି ଓ କୃଷକ ସଙ୍କଟ ନିବାରଣ ପ୍ଲାଟଫର୍ମ',
+    footerBadge1: '🌾 ୨୨ଟି ଆଞ୍ଚଳିକ ଭାଷା',
+    footerBadge2: '🎙️ ଭଏସ୍ ଏଆଇ ସମର୍ଥିତ',
+    footerBadge3: '⚡ ସ୍ୱଳ୍ପ ଇଣ୍ଟରନେଟ୍ ଉପଯୋଗୀ',
+    resetPasswordTitle: 'କୃଷକ ପାସୱାର୍ଡ ପୁନରୁଦ୍ଧାର କରନ୍ତୁ',
+    resetPasswordSubtext: '୪-ଅଙ୍କ ବିଶିଷ୍ଟ SMS OTP ପାଇବା ପାଇଁ ଆପଣଙ୍କ ପଞ୍ଜୀକୃତ ମୋବାଇଲ୍ କିମ୍ବା ଇମେଲ୍ ଦିଅନ୍ତୁ।',
+    otpSentSuccess: 'ଓଟିପି ସଫଳତାର ସହ ପଠାଗଲା!',
+    otpSentDetails: 'ଯାଞ୍ଚ କୋଡ୍ ପଠାଯାଇଛି। ଲଗଇନ୍ ପାଇଁ ଡେମୋ OTP 8492 ବ୍ୟବହାର କରନ୍ତୁ।',
+    returnToLoginBtn: 'ଲଗଇନ୍‌କୁ ଫେରନ୍ତୁ',
+    sendResetOtpBtn: 'ରିସେଟ୍ OTP ପଠାନ୍ତୁ',
+    sendingSmsOtp: 'SMS OTP ପଠାଯାଉଛି...',
+    cancelBackToLogin: 'ବାତିଲ୍ କରନ୍ତୁ ଏବଂ ଲଗଇନ୍‌କୁ ଫେରନ୍ତୁ',
+    updateWeatherTag: 'ଜରୁରୀ',
+    updateWeatherTitle: 'ପ୍ରବଳ ବର୍ଷା ସତର୍କତା',
+    updateWeatherMsg: 'ଆସନ୍ତାକାଲି ଆପଣଙ୍କ ଅଞ୍ଚଳରେ ପ୍ରବଳ ବର୍ଷା ସହିତ ବଜ୍ରପାତ ହେବାର ସମ୍ଭାବନା ଅଛି। ଜଳସେଚନ ଓ କୀଟନାଶକ ପ୍ରୟୋଗ ସ୍ଥଗିତ ରଖନ୍ତୁ।',
+    updateSchemeTag: 'ଲାଭ',
+    updateSchemeTitle: 'ପିଏମ୍-କିଷାନ ୧୭ଶ କିସ୍ତି',
+    updateSchemeMsg: 'ପିଏମ୍-କିଷାନ e-KYC ସମୟସୀମା ବୃଦ୍ଧି କରାଯାଇଛି। ସକ୍ରିୟ ଚାଷୀଙ୍କୁ ₹୨,୦୦୦ ସିଧାସଳଖ ହସ୍ତାନ୍ତର କରାଯିବ।',
+    updateMandiTag: 'ବୃଦ୍ଧି',
+    updateMandiTitle: 'ଟମାଟୋ ଓ ଧାନ ଦର ବୃଦ୍ଧି',
+    updateMandiMsg: 'ନିକଟସ୍ଥ ମଣ୍ଡିରେ ଟମାଟୋ ଦର ୧୨% ବୃଦ୍ଧି ପାଇଛି (₹୨,୪୫୦/କ୍ୱିଣ୍ଟାଲ)। ବିକ୍ରି ପାଇଁ ଉତ୍ତମ ସୁଯୋଗ।',
+    updateInsuranceTag: 'ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ',
+    updateInsuranceTitle: 'ପିଏମଏଫବିୱାଇ ଖରିଫ୍ ଶେଷ ତାରିଖ',
+    updateInsuranceMsg: 'ଫସଲ ବୀମା ପାଇଁ ତୁରନ୍ତ ଆବେଦନ କରନ୍ତୁ। କୌଣସି ଫସଲ କ୍ଷତିର ୭୨ ଘଣ୍ଟା ମଧ୍ୟରେ ଅଭିଯୋଗ ଦାଖଲ କରନ୍ତୁ।',
+    updatePestTag: 'କୀଟ ସତର୍କତା',
+    updatePestTitle: 'ଧାନ କାଣ୍ଡବିନ୍ଧା ପୋକ ସତର୍କତା',
+    updatePestMsg: 'ଅଧିକ ଆର୍ଦ୍ରତା ଯୋଗୁଁ ହଳଦିଆ କାଣ୍ଡବିନ୍ଧା ପୋକ ଆକ୍ରମଣ ହୋଇପାରେ। ଏକର ପିଛା ୫ଟି ଫେରୋମୋନ୍ ଟ୍ରାପ୍ ଲଗାନ୍ତୁ।',
+    updateTipTag: 'ପରାମର୍ଶ',
+    updateTipTitle: 'ଯବକ୍ଷାରଜାନର ସଠିକ୍ ପ୍ରୟୋଗ',
+    updateTipMsg: 'ଫଳ ଧାରଣ ସମୟରେ ବାକି ୨୫% ଯବକ୍ଷାରଜାନ ପ୍ରୟୋଗ କଲେ ଧାନ ଦାନା ଓଜନ ୧୪% ବୃଦ୍ଧି ପାଏ।',
   },
   te: {
     appTitle: 'స్మార్ట్ కృషి',
@@ -581,6 +992,104 @@ export const translations: Record<LanguageCode, TranslationSchema> = {
     voiceSpeed: 'వాయిస్ వేగం',
     saveChanges: 'మార్పులను భద్రపరచండి',
     sihEngineTag: 'స్మార్ట్ ఇండియా హ్యాకథాన్ ప్రాజెక్ట్ • పంట సలహా & ముందస్తు హెచ్చరిక',
+    rainfallDeviation: 'వర్షపాత వ్యత్యాసం / లోటు',
+    rainfallDeviationVal: 'సగటు కంటే -30% తక్కువ',
+    mandiPriceDrop: 'మార్కెట్ ధర తగ్గుదల',
+    mandiPriceDropVal: 'గత 7 రోజుల్లో -18%',
+    kccLoanProximity: 'కేసీసీ రుణం గడువు',
+    kccLoanProximityVal: 'మధ్యస్థం (45 రోజుల్లో గడువు)',
+    cropStressIndex: 'పంట ఒత్తిడి సూచిక',
+    cropStressIndexVal: 'ఆరోగ్యకరం (శాకీయ దశ)',
+    distressCardSubtitle: 'వాతావరణ లోటు మరియు మార్కెట్ ధర తగ్గుదల ఆధారంగా లెక్కించబడిన ప్రమాదం',
+    simulateVectorsBtn: 'ప్రమాద కారకాలు & హెచ్చరిక పరిమితిని పరిశీలించండి',
+    officerAlertSentLogged: 'స్థానిక వ్యవసాయ అధికారి అలర్ట్: పంపబడింది & నమోదు చేయబడింది',
+    officerLabel: 'అధికారి',
+    farmingAdvice1: 'రేపు భారీ వర్షం (72% సంభావ్యత) ఉన్నందున ఈరోజు నీరు పెట్టవద్దు.',
+    farmingAdvice2: 'అట్టాబిరా మార్కెట్లో ప్రస్తుత ధర క్వింటాలుకు ₹100 ఎక్కువ (₹2,450 vs ₹2,350).',
+    farmingAdvice3: 'కింది ఆకులపై గోధుమ రంగు మచ్చలను గమనించండి; తేమ ఎక్కువగా ఉంటే వేప నూనె పిచికారీ చేయండి.',
+    compareMandiPricesBtn: 'మార్కెట్ ధరలను సరిపోల్చండి',
+    checkCropHealthLabBtn: 'పంట ఆరోగ్య ల్యాబ్ చూడండి',
+    openDiseaseScanner: 'ఏఐ వ్యాధి స్కానర్ తెరవండి',
+    vegetativeStageAcres: 'శాకీయ దశ • 3.0 ఎకరాలు',
+    selectLanguage: 'భాషను ఎంచుకోండి / Select Language',
+    farmerPortalLoginTitle: 'రైతు పోర్టల్ లాగిన్',
+    newFarmerRegTitle: 'కొత్త రైతు నమోదు',
+    loginSubtext: 'మీ పొలం వివరాలను పొందడానికి మీ నమోదిత మొబైల్ లేదా ఈమెయిల్ నమోదు చేయండి',
+    regSubtext: 'పంట సలహాలు మరియు సహాయం కోసం i KISAN తో చేరండి',
+    loginTabBtn: 'లాగిన్',
+    signUpTabBtn: 'సైన్ అప్ (రైతు)',
+    emailOrMobileLabel: 'ఈమెయిల్ లేదా మొబైల్ నంబర్',
+    emailOrMobileHelper: 'మీ 10 అంకెల రిజిస్టర్డ్ మొబైల్ నంబర్ లేదా ఈమెయిల్ ఐడీని నమోదు చేయండి.',
+    passwordLabel: 'పాస్‌వర్డ్',
+    forgotPasswordLink: 'పాస్‌వర్డ్ మర్చిపోయారా?',
+    verifyingCredentials: 'రైతు వివరాలు ధృవీకరించబడుతున్నాయి...',
+    oneClickDemoLogin: '1-క్లిక్ డెమో లాగిన్ (ప్రణబ్ • 3.5 ఎకరాలు)',
+    dontHaveAccountYet: 'ఇంకా ఖాతా లేదా?',
+    registerFarmHere: 'ఇక్కడ మీ పొలాన్ని నమోదు చేసుకోండి',
+    secPersonalDetails: '1. రైతు వ్యక్తిగత వివరాలు',
+    secCropFieldDetails: '2. పంట మరియు పొలం వివరాలు',
+    fullNameLabel: 'పూర్తి పేరు',
+    mobileLabel: 'మొబైల్ నంబర్',
+    emailOptionalLabel: 'ఈమెయిల్ చిరునామా (ఐచ్ఛికం)',
+    stateLabel: 'రాష్ట్రం',
+    districtLabel: 'జిల్లా',
+    villageLabel: 'గ్రామం / పంచాయితీ',
+    repeatPassword: 'పాస్‌వర్డ్ ధృవీకరించండి',
+    mainCropLabel: 'ప్రధాన పంట పేరు',
+    otherCropsLabel: 'ఇతర పంటలు (ఐచ్ఛికం)',
+    farmAreaLabel: 'సాగు విస్తీర్ణం (ఎకరాలలో)',
+    soilTypeLabel: 'నేల రకం',
+    irrigationTypeLabel: 'నీటిపారుదల రకం',
+    farmingTypeLabel: 'వ్యవసాయ పద్ధతి',
+    growthStageLabel: 'ప్రస్తుత పంట పెరుగుదల దశ',
+    expectedHarvestLabel: 'అంచనా కోత తేదీ (ఐచ్ఛికం)',
+    completeRegBtn: 'నమోదు పూర్తి చేసి డ్యాష్‌బోర్డ్ తెరవండి',
+    alreadyHaveAccountLogin: 'ఇప్పటికే ఖాతా ఉందా?',
+    realtimeBulletinBadge: 'రియల్-టైమ్ వ్యవసాయ సలహా బులెటిన్',
+    kharifEditionTag: 'ఖరీఫ్ 2026 ఎడిషన్',
+    liveUpdatesTitle: 'ప్రత్యక్ష వ్యవసాయ ముఖ్యాంశాలు & హెచ్చరికలు',
+    liveUpdatesSub: 'వాతావరణం, మార్కెట్ ధరలు, ప్రభుత్వ పథకాలు మరియు సలహాలు',
+    filterAll: 'అన్నీ',
+    filterWeather: 'వాతావరణం',
+    filterSchemes: 'పథకాలు',
+    filterMandi: 'మార్కెట్',
+    filterAdvisory: 'సలహాలు',
+    badgeLanguages: 'భాషలు',
+    badgeLanguagesVal: '22 భారతీయ భాషలు',
+    badgeNetwork: 'నెట్‌వర్క్',
+    badgeNetworkVal: '2G / లైట్ అనుకూలం',
+    badgeSos: 'అధికారి SOS',
+    badgeSosVal: 'ఆటో-డిస్పాచ్',
+    footerPlatformTag: '— వ్యవసాయ నిర్ణయం మరియు రైతు సంక్షేమ వేదిక',
+    footerBadge1: '🌾 22 ప్రాంతీయ భాషలు',
+    footerBadge2: '🎙️ వాయిస్ ఏఐ సపోర్ట్',
+    footerBadge3: '⚡ తక్కువ బ్యాండ్‌విడ్త్ అనుకూలం',
+    resetPasswordTitle: 'రైతు పాస్‌వర్డ్ రీసెట్ చేయండి',
+    resetPasswordSubtext: '4 అంకెల SMS OTP కోడ్ పొందడానికి మీ నమోదిత మొబైల్ లేదా ఈమెయిల్ నమోదు చేయండి.',
+    otpSentSuccess: 'OTP విజయవంతంగా పంపబడింది!',
+    otpSentDetails: 'ధృవీకరణ కోడ్ పంపబడింది. లాగిన్ కోసం డెమో OTP 8492 ఉపయోగించండి.',
+    returnToLoginBtn: 'లాగిన్‌కు తిరిగి వెళ్ళండి',
+    sendResetOtpBtn: 'రీసెట్ OTP పంపండి',
+    sendingSmsOtp: 'SMS OTP పంపబడుతోంది...',
+    cancelBackToLogin: 'రద్దు చేసి లాగిన్‌కు వెళ్ళండి',
+    updateWeatherTag: 'అత్యవసరం',
+    updateWeatherTitle: 'భారీ వర్షపాతం హెచ్చరిక',
+    updateWeatherMsg: 'రేపు మీ ప్రాంతంలో భారీ వర్షం మరియు ఉరుములతో కూడిన జల్లులు పడే అవకాశం ఉంది. సాగునీరు మరియు మందుల పిచికారీని వాయిదా వేయండి.',
+    updateSchemeTag: 'ప్రయోజనం',
+    updateSchemeTitle: 'పీఎం-కిసాన్ 17వ విడత',
+    updateSchemeMsg: 'పీఎం-కిసాన్ e-KYC గడువు పొడిగించబడింది. అర్హులైన రైతులకు ₹2,000 ప్రత్యక్ష బదిలీ చేయబడుతుంది.',
+    updateMandiTag: 'లాభదాయకం',
+    updateMandiTitle: 'టమోటా & వరి ధరల పెరుగుదల',
+    updateMandiMsg: 'సమీప మార్కెట్లలో టమోటా ధరలు 12% పెరిగాయి (₹2,450/క్వింటాల్). అమ్మకానికి అనువైన సమయం.',
+    updateInsuranceTag: 'ముఖ్యమైనది',
+    updateInsuranceTitle: 'పీఎం పంట బీమా ఖరీఫ్ గడువు',
+    updateInsuranceMsg: 'గడువు లోపు పంట బీమా కోసం దరఖాస్తు చేసుకోండి. స్థానిక నష్టాల వివరాలను 72 గంటల్లో నమోదు చేయండి.',
+    updatePestTag: 'తెగులు హెచ్చరిక',
+    updatePestTitle: 'వరి కాండం తొలుచు పురుగు హెచ్చరిక',
+    updatePestMsg: 'తేమ ఎక్కువగా ఉన్నందున పసుపు కాండం తొలుచు పురుగు వ్యాప్తి చెందే అవకాశం ఉంది. ఎకరాకు 5 లింగాకర్షక బుట్టలను అమర్చండి.',
+    updateTipTag: 'సలహా',
+    updateTipTitle: 'నత్రజని ఎరువుల యాజమాన్యం',
+    updateTipMsg: 'వెన్ను దశలో మిగిలిన 25% నత్రజని ఎరువును వేయడం వల్ల ధాన్యం గింజ బరువు 14% పెరుగుతుంది.',
   },
   ml: {
     appTitle: 'സ്മാർട്ട് കൃഷി',
@@ -697,6 +1206,104 @@ export const translations: Record<LanguageCode, TranslationSchema> = {
     voiceSpeed: 'വോയ്സ് വേഗത',
     saveChanges: 'മാറ്റങ്ങൾ സൂക്ഷിക്കുക',
     sihEngineTag: 'സ്മാർട്ട് ഇന്ത്യ ഹാക്കത്തോൺ പ്രോജക്ട് • വിള ഉപദേശവും ദുരിത മുന്നറിയിപ്പും',
+    rainfallDeviation: 'മഴയുടെ കുറവ് / വ്യതിയാനം',
+    rainfallDeviationVal: 'ശരാശരിയേക്കാൾ -30% കുറവ്',
+    mandiPriceDrop: 'വിപണി വിലയിടിവ്',
+    mandiPriceDropVal: 'കഴിഞ്ഞ 7 ദിവസത്തിൽ -18%',
+    kccLoanProximity: 'കെസിസി വായ്പ കാലാവധി',
+    kccLoanProximityVal: 'ഇടത്തരം (45 ദിവസത്തിനകം)',
+    cropStressIndex: 'വിള സമ്മർദ്ദ സൂചിക',
+    cropStressIndexVal: 'ആരോഗ്യമുള്ളത് (വളർച്ചാ ഘട്ടം)',
+    distressCardSubtitle: 'കാലാവസ്ഥാ വ്യതിയാനവും വിപണി വിലയിടിവും അടിസ്ഥാനമാക്കിയുള്ള അപകട കണക്കുകൂട്ടൽ',
+    simulateVectorsBtn: 'അപകട ഘടകങ്ങളും പരിധിയും സിമുലേറ്റ് ചെയ്യുക',
+    officerAlertSentLogged: 'പ്രാദേശിക കൃഷി ഓഫീസർ അലേർട്ട്: അയച്ചു & രേഖപ്പെടുത്തി',
+    officerLabel: 'ഓഫീസർ',
+    farmingAdvice1: 'നാളെ കനത്ത മഴയ്ക്ക് (72% സാധ്യത) സാധ്യതയുള്ളതിനാൽ ഇന്ന് നനയ്ക്കരുത്.',
+    farmingAdvice2: 'അട്ടാബിറ മാർക്കറ്റിൽ നിലവിലെ വില ക്വിന്റലിന് ₹100 കൂടുതലാണ് (₹2,450 vs ₹2,350).',
+    farmingAdvice3: 'താഴത്തെ ഇലകളിൽ തവിട്ടുനിറത്തിലുള്ള പാടുകൾ ശ്രദ്ധിക്കുക; ഈർപ്പമുള്ള കാലാവസ്ഥ തുടരുകയാണെങ്കിൽ വേപ്പെണ്ണ തളിക്കുക.',
+    compareMandiPricesBtn: 'വിപണി വിലകൾ താരതമ്യം ചെയ്യുക',
+    checkCropHealthLabBtn: 'വിള ആരോഗ്യ ലാബ് പരിശോധിക്കുക',
+    openDiseaseScanner: 'എഐ രോഗ സ്കാനർ തുറക്കുക',
+    vegetativeStageAcres: 'വളർച്ചാ ഘട്ടം • 3.0 ഏക്കർ',
+    selectLanguage: 'ഭാഷ തിരഞ്ഞെടുക്കുക / Select Language',
+    farmerPortalLoginTitle: 'കർഷക പോർട്ടൽ ലോഗിൻ',
+    newFarmerRegTitle: 'പുതിയ കർഷക രജിസ്ട്രേഷൻ',
+    loginSubtext: 'നിങ്ങളുടെ കൃഷിയിടത്തിലേക്ക് പ്രവേശിക്കാൻ രജിസ്റ്റർ ചെയ്ത മൊബൈൽ നമ്പറോ ഇമെയിലോ നൽകുക',
+    regSubtext: 'വിള ഉപദേശത്തിനും സഹായത്തിനുമായി i KISAN ൽ ചേരുക',
+    loginTabBtn: 'ലോഗിൻ',
+    signUpTabBtn: 'സൈൻ അപ്പ് (കർഷകൻ)',
+    emailOrMobileLabel: 'ഇമെയിൽ അല്ലെങ്കിൽ മൊബൈൽ നമ്പർ',
+    emailOrMobileHelper: 'നിങ്ങളുടെ 10 അക്ക രജിസ്റ്റർ ചെയ്ത മൊബൈൽ നമ്പറോ ഇമെയിൽ ഐഡിയോ നൽകുക.',
+    passwordLabel: 'പാസ്‌വേഡ്',
+    forgotPasswordLink: 'പാസ്‌വേഡ് മറന്നോ?',
+    verifyingCredentials: 'കർഷക വിവരങ്ങൾ പരിശോധിക്കുന്നു...',
+    oneClickDemoLogin: '1-ക്ലിക്ക് ഡെമോ ലോഗിൻ (പ്രണബ് • 3.5 ഏക്കർ)',
+    dontHaveAccountYet: 'ഇതുവരെ അക്കൗണ്ടില്ലേ?',
+    registerFarmHere: 'നിങ്ങളുടെ കൃഷിയിടം ഇവിടെ രജിസ്റ്റർ ചെയ്യുക',
+    secPersonalDetails: '1. കർഷകന്റെ വ്യക്തിഗത വിവരങ്ങൾ',
+    secCropFieldDetails: '2. വിളയുടെയും കൃഷിഭൂമിയുടെയും വിവരങ്ങൾ',
+    fullNameLabel: 'പൂർണ്ണ പേര്',
+    mobileLabel: 'മൊബൈൽ നമ്പർ',
+    emailOptionalLabel: 'ഇമെയിൽ വിലാസം (ഓപ്ഷണൽ)',
+    stateLabel: 'സംസ്ഥാനം',
+    districtLabel: 'ജില്ല',
+    villageLabel: 'ഗ്രാമം / പഞ്ചായത്ത്',
+    repeatPassword: 'പാസ്‌വേഡ് സ്ഥിരീകരിക്കുക',
+    mainCropLabel: 'പ്രധാന വിളയുടെ പേര്',
+    otherCropsLabel: 'മറ്റു വിളകൾ (ഓപ്ഷണൽ)',
+    farmAreaLabel: 'കൃഷിഭൂമിയുടെ വിസ്തീർണ്ണം (ഏക്കറിൽ)',
+    soilTypeLabel: 'മണ്ണിന്റെ തരം',
+    irrigationTypeLabel: 'ജലസേചന രീതി',
+    farmingTypeLabel: 'കൃഷി രീതി',
+    growthStageLabel: 'വിളയുടെ ഇപ്പോഴത്തെ വളർച്ചാ ഘട്ടം',
+    expectedHarvestLabel: 'വിളവെടുപ്പ് പ്രതീക്ഷിക്കുന്ന തീയതി (ഓപ്ഷണൽ)',
+    completeRegBtn: 'രജിസ്ട്രേഷൻ പൂർത്തിയാക്കി ഡാഷ്‌ബോർഡ് തുറക്കുക',
+    alreadyHaveAccountLogin: 'ഇതിനകം അക്കൗണ്ടുണ്ടോ?',
+    realtimeBulletinBadge: 'തത്സമയ കാർഷിക ഉപദേശ ബുള്ളറ്റിൻ',
+    kharifEditionTag: 'ഖാരിഫ് 2026 പതിപ്പ്',
+    liveUpdatesTitle: 'തത്സമയ കാർഷിക വാർത്തകളും മുന്നറിയിപ്പുകളും',
+    liveUpdatesSub: 'കാലാവസ്ഥ, വിപണി വില, സർക്കാർ പദ്ധതികൾ, നിർദ്ദേശങ്ങൾ',
+    filterAll: 'എല്ലാം',
+    filterWeather: 'കാലാവസ്ഥ',
+    filterSchemes: 'പദ്ധതികൾ',
+    filterMandi: 'വിപണി നിരക്കുകൾ',
+    filterAdvisory: 'ഉപദേശങ്ങൾ',
+    badgeLanguages: 'ഭാഷകൾ',
+    badgeLanguagesVal: '22 ഇന്ത്യൻ ഭാഷകൾ',
+    badgeNetwork: 'നെറ്റ്‌വർക്ക്',
+    badgeNetworkVal: '2G / ലൈറ്റ് പിന്തുണ',
+    badgeSos: 'ഓഫീസർ SOS',
+    badgeSosVal: 'ഓട്ടോ-ഡിസ്പാച്ച്',
+    footerPlatformTag: '— കാർഷിക തീരുമാനവും കർഷക സുരക്ഷാ വേദിയും',
+    footerBadge1: '🌾 22 പ്രാദേശിക ഭാഷകൾ',
+    footerBadge2: '🎙️ വോയ്‌സ് എഐ പിന്തുണ',
+    footerBadge3: '⚡ കുറഞ്ഞ ഇന്റർനെറ്റ് അനുയോജ്യം',
+    resetPasswordTitle: 'കർഷക പാസ്‌വേഡ് പുനഃസജ്ജമാക്കുക',
+    resetPasswordSubtext: '4 അക്ക SMS OTP ലഭിക്കാൻ നിങ്ങളുടെ രജിസ്റ്റർ ചെയ്ത മൊബൈൽ നമ്പറോ ഇമെയിലോ നൽകുക.',
+    otpSentSuccess: 'OTP വിജയകരമായി അയച്ചു!',
+    otpSentDetails: 'സ്ഥിരീകരണ കോഡ് അയച്ചു. ലോഗിൻ ചെയ്യാൻ ഡെമോ OTP 8492 ഉപയോഗിക്കുക.',
+    returnToLoginBtn: 'ലോഗിനിലേക്ക് മടങ്ങുക',
+    sendResetOtpBtn: 'റീസെറ്റ് OTP അയക്കുക',
+    sendingSmsOtp: 'SMS OTP അയക്കുന്നു...',
+    cancelBackToLogin: 'റദ്ദാക്കി ലോഗിനിലേക്ക് മടങ്ങുക',
+    updateWeatherTag: 'അടിയന്തിരം',
+    updateWeatherTitle: 'കനത്ത മഴ മുന്നറിയിപ്പ്',
+    updateWeatherMsg: 'നാളെ നിങ്ങളുടെ പ്രദേശത്ത് ശക്തമായ മഴയ്ക്കും ഇടിമിന്നലിനും സാധ്യതയുണ്ട്. ജലസേചനവും കീടനാശിനി തളിക്കലും മാറ്റിവെക്കുക.',
+    updateSchemeTag: 'ആനുകൂല്യം',
+    updateSchemeTitle: 'പിഎം-കിസാൻ 17-ാം ഗഡു',
+    updateSchemeMsg: 'പിഎം-കിസാൻ ഇ-കെവൈസി തീയതി നീട്ടി. കർഷകരുടെ അക്കൗണ്ടിലേക്ക് ₹2,000 ഉടൻ ലഭ്യമാക്കും.',
+    updateMandiTag: 'വിലക്കയറ്റം',
+    updateMandiTitle: 'തക്കാളി, നെല്ല് വിപണി വില ഉയർന്നു',
+    updateMandiMsg: 'സമീപത്തെ മാർക്കറ്റുകളിൽ തക്കാളി വിലയിൽ 12% വർദ്ധനവ് (₹2,450/ക്വിന്റൽ). വിൽപനയ്ക്ക് അനുയോജ്യമായ സമയം.',
+    updateInsuranceTag: 'പ്രധാനം',
+    updateInsuranceTitle: 'പിഎം വിള ഇൻഷുറൻസ് തീയതി',
+    updateInsuranceMsg: 'വിള ഇൻഷുറൻസിനായി ഉടൻ അപേക്ഷിക്കുക. പ്രാദേശിക നഷ്ട വിവരങ്ങൾ 72 മണിക്കൂറിനുള്ളിൽ രജിസ്റ്റർ ചെയ്യുക.',
+    updatePestTag: 'കീട മുന്നറിയിപ്പ്',
+    updatePestTitle: 'തണ്ടുതുരപ്പൻ പുഴു മുന്നറിയിപ്പ്',
+    updatePestMsg: 'അന്തരീക്ഷ ഈർപ്പം കൂടുന്നത് മൂലം നെല്ലിൽ തണ്ടുതുരപ്പൻ സാധ്യതയുണ്ട്. ഏക്കറിന് 5 ഫെറോമോൺ കെണികൾ സ്ഥാപിക്കുക.',
+    updateTipTag: 'ഉപദേശം',
+    updateTipTitle: 'നൈട്രജൻ വളപ്രയോഗം',
+    updateTipMsg: 'കതിര് വരുന്ന ഘട്ടത്തിൽ ബാക്കി 25% നൈട്രജൻ വളം നൽകുന്നത് നെല്ലിന്റെ തൂക്കം 14% വർദ്ധിപ്പിക്കും.',
   },
 };
 

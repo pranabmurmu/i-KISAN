@@ -66,7 +66,7 @@ export const HomeDashboard: React.FC = () => {
           <div className="relative z-10 space-y-4">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-bold">
               <span>⚠️</span>
-              <span>EARLY WARNING ALERT</span>
+              <span>{t.earlyWarningAlert.replace('⚠️ ', '')}</span>
             </div>
             
             <div>
@@ -74,7 +74,7 @@ export const HomeDashboard: React.FC = () => {
                 {t.distressRiskTitle}
               </h3>
               <p className="text-xs text-stone-500 font-medium">
-                Multi-factor risk calculated based on environmental deficit & mandi drops
+                {t.distressCardSubtitle}
               </p>
             </div>
 
@@ -85,30 +85,30 @@ export const HomeDashboard: React.FC = () => {
               </span>
               <span className="text-base font-extrabold text-red-500 uppercase tracking-wider">
                 {distressRiskData.riskLevel === 'High'
-                  ? 'HIGH RISK'
+                  ? t.riskLevelHigh
                   : distressRiskData.riskLevel === 'Medium'
-                  ? 'MODERATE RISK'
-                  : 'SAFE STATUS'}
+                  ? t.riskLevelMedium
+                  : t.riskLevelLow}
               </span>
             </div>
 
             {/* Contributing Factor Rows */}
             <div className="space-y-2.5 pt-2">
               <div className="flex justify-between text-xs items-center border-b border-red-50 pb-2">
-                <span className="text-stone-600 font-medium">Rainfall Deviation</span>
-                <span className="font-bold text-red-600">-30% below avg</span>
+                <span className="text-stone-600 font-medium">{t.rainfallDeviation}</span>
+                <span className="font-bold text-red-600">{t.rainfallDeviationVal}</span>
               </div>
               <div className="flex justify-between text-xs items-center border-b border-red-50 pb-2">
-                <span className="text-stone-600 font-medium">Mandi Price Drop</span>
-                <span className="font-bold text-red-600">-18% last 7d</span>
+                <span className="text-stone-600 font-medium">{t.mandiPriceDrop}</span>
+                <span className="font-bold text-red-600">{t.mandiPriceDropVal}</span>
               </div>
               <div className="flex justify-between text-xs items-center border-b border-red-50 pb-2">
-                <span className="text-stone-600 font-medium">KCC Loan Proximity</span>
-                <span className="font-bold text-amber-600">Moderate (Due 45d)</span>
+                <span className="text-stone-600 font-medium">{t.kccLoanProximity}</span>
+                <span className="font-bold text-amber-600">{t.kccLoanProximityVal}</span>
               </div>
               <div className="flex justify-between text-xs items-center border-b border-red-50 pb-2">
-                <span className="text-stone-600 font-medium">Crop Stress Index</span>
-                <span className="font-bold text-stone-700">Healthy (Vegetative)</span>
+                <span className="text-stone-600 font-medium">{t.cropStressIndex}</span>
+                <span className="font-bold text-stone-700">{t.cropStressIndexVal}</span>
               </div>
             </div>
 
@@ -119,7 +119,7 @@ export const HomeDashboard: React.FC = () => {
               className="w-full py-2.5 px-4 bg-stone-100 hover:bg-stone-200/80 text-stone-800 rounded-xl text-xs font-bold flex items-center justify-center gap-2 border border-stone-200 transition-colors"
             >
               <Sliders className="w-3.5 h-3.5 text-stone-600" />
-              <span>Simulate Factor Vectors & Threshold</span>
+              <span>{t.simulateVectorsBtn}</span>
             </button>
           </div>
 
@@ -128,11 +128,11 @@ export const HomeDashboard: React.FC = () => {
             <div className="flex items-center gap-2 text-green-800 font-bold bg-green-50 border border-green-200/70 p-3 rounded-xl">
               <Check className="w-4 h-4 text-green-700 shrink-0" />
               <span className="text-xs uppercase tracking-wide">
-                Local Agri Officer Alert: Sent & Logged
+                {t.officerAlertSentLogged}
               </span>
             </div>
             <div className="text-[11px] text-stone-500 px-1 flex justify-between items-center">
-              <span>Officer: {distressRiskData.officerAlertStatus.officerName}</span>
+              <span>{t.officerLabel}: {distressRiskData.officerAlertStatus.officerName}</span>
               <span className="font-mono text-green-700 font-semibold">{distressRiskData.officerAlertStatus.officerContact}</span>
             </div>
           </div>
@@ -150,7 +150,7 @@ export const HomeDashboard: React.FC = () => {
             <div className="bg-white rounded-3xl p-6 border border-green-100 shadow-sm hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-default">
               <div>
                 <h4 className="text-xs uppercase font-bold text-green-600 mb-4 tracking-widest">
-                  Weather Forecast
+                  {t.weatherTitle}
                 </h4>
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 text-3xl">
@@ -158,7 +158,7 @@ export const HomeDashboard: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xl sm:text-2xl font-extrabold text-green-950">
-                      Rain Prob: {todayWeather.rainProbability}%
+                      {t.rainProbability}: {todayWeather.rainProbability}%
                     </p>
                     <p className="text-xs text-green-600 font-semibold mt-0.5">
                       32°C • {todayWeather.condition}
@@ -167,7 +167,7 @@ export const HomeDashboard: React.FC = () => {
                 </div>
               </div>
               <div className="mt-4 pt-3 border-t border-green-50 text-[11px] text-stone-500">
-                Humidity: <strong className="text-stone-700">{todayWeather.humidity}%</strong> • Wind: <strong className="text-stone-700">{todayWeather.windSpeedKmH} km/h</strong>
+                {t.humidity}: <strong className="text-stone-700">{todayWeather.humidity}%</strong> • {t.windSpeed}: <strong className="text-stone-700">{todayWeather.windSpeedKmH} km/h</strong>
               </div>
             </div>
 
@@ -175,7 +175,7 @@ export const HomeDashboard: React.FC = () => {
             <div className="bg-white rounded-3xl p-6 border border-green-100 shadow-sm hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-default">
               <div>
                 <h4 className="text-xs uppercase font-bold text-green-600 mb-4 tracking-widest">
-                  Paddy Crop Health
+                  {t.cropHealthTitle}
                 </h4>
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 bg-green-100 border border-green-200 rounded-2xl flex items-center justify-center text-green-700 shrink-0">
@@ -183,10 +183,10 @@ export const HomeDashboard: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xl sm:text-2xl font-extrabold text-green-950">
-                      Status: {cropConditionData.statusLabel}
+                      {t.cropStatus}: {cropConditionData.statusLabel}
                     </p>
                     <p className="text-xs text-green-600 font-semibold mt-0.5">
-                      Vegetative Stage • 3.0 Acres
+                      {t.vegetativeStageAcres}
                     </p>
                   </div>
                 </div>
@@ -194,9 +194,9 @@ export const HomeDashboard: React.FC = () => {
               <div className="mt-4 pt-3 border-t border-green-50 flex items-center justify-between text-xs font-bold text-green-700">
                 <button
                   onClick={() => setActiveView('disease')}
-                  className="hover:underline flex items-center gap-1"
+                  className="hover:underline flex items-center gap-1 cursor-pointer"
                 >
-                  <span>Open AI Disease Scanner</span>
+                  <span>{t.openDiseaseScanner}</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
@@ -208,7 +208,7 @@ export const HomeDashboard: React.FC = () => {
           <div className="bg-green-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden flex flex-col justify-between cursor-default">
             <div className="relative z-10 space-y-4">
               <h4 className="text-xs uppercase font-bold text-green-200 tracking-widest">
-                Today's Farming Advice
+                {t.todaysAdvice}
               </h4>
 
               <ul className="space-y-3.5">
@@ -217,7 +217,7 @@ export const HomeDashboard: React.FC = () => {
                     1
                   </span>
                   <p className="text-sm sm:text-base leading-snug">
-                    Avoid irrigation today because <span className="text-yellow-300 font-bold">heavy rainfall (72% prob)</span> is expected tomorrow.
+                    {t.farmingAdvice1}
                   </p>
                 </li>
                 <li className="flex items-start gap-3.5">
@@ -225,7 +225,7 @@ export const HomeDashboard: React.FC = () => {
                     2
                   </span>
                   <p className="text-sm sm:text-base leading-snug">
-                    Current mandi prices are <span className="text-yellow-400 font-bold">higher by ₹100/qtl</span> in Attabira APMC (₹2,450 vs ₹2,350).
+                    {t.farmingAdvice2}
                   </p>
                 </li>
                 <li className="flex items-start gap-3.5">
@@ -233,7 +233,7 @@ export const HomeDashboard: React.FC = () => {
                     3
                   </span>
                   <p className="text-sm sm:text-base leading-snug">
-                    Monitor lower leaves for early brown spots; spray neem oil if humid weather persists.
+                    {t.farmingAdvice3}
                   </p>
                 </li>
               </ul>
@@ -242,15 +242,15 @@ export const HomeDashboard: React.FC = () => {
               <div className="pt-4 flex flex-wrap gap-3">
                 <button
                   onClick={() => setActiveView('marketplace')}
-                  className="bg-yellow-400 text-green-950 px-5 py-2.5 rounded-xl font-bold text-xs shadow-md hover:bg-yellow-300 transition-colors"
+                  className="bg-yellow-400 text-green-950 px-5 py-2.5 rounded-xl font-bold text-xs shadow-md hover:bg-yellow-300 transition-colors cursor-pointer"
                 >
-                  Compare Mandi Prices
+                  {t.compareMandiPricesBtn}
                 </button>
                 <button
                   onClick={() => setActiveView('disease')}
-                  className="bg-white/10 text-white border border-white/20 px-5 py-2.5 rounded-xl font-bold text-xs hover:bg-white/20 transition-colors"
+                  className="bg-white/10 text-white border border-white/20 px-5 py-2.5 rounded-xl font-bold text-xs hover:bg-white/20 transition-colors cursor-pointer"
                 >
-                  Check Crop Health Lab
+                  {t.checkCropHealthLabBtn}
                 </button>
               </div>
             </div>
