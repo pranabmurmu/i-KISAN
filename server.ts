@@ -25,6 +25,25 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", geminiConfigured: hasGemini });
 });
 
+// Real-Time Weather API Proxy (Open-Meteo & Geocoding)
+app.get("/api/weather", async (req, res) => {
+  try {
+    const lat = req.query.lat ? String(req.query.lat) : "20.19";
+    const lon = req.query.lon ? String(req.query.lon) : "85.62";
+    
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,weather_code,wind_speed_10m,wind_direction_10m,surface_pressure&hourly=temperature_2m,precipitation_probability,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,relative_humidity_2m_mean&timezone=auto&forecast_days=7`;
+    
+    const weatherRes = await fetch(weatherUrl);
+    if (!weatherRes.ok) {
+      return res.status(weatherRes.status).json({ error: "Failed to fetch weather from provider" });
+    }
+    const data = await weatherRes.json();
+    return res.json(data);
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message || "Failed to fetch weather" });
+  }
+});
+
 // 1. Google Gemini Crop Disease Lab Diagnosis & Auto-Crop Identification
 app.post("/api/disease-diagnose", async (req, res) => {
   try {

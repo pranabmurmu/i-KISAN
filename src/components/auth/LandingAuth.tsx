@@ -61,8 +61,8 @@ export const LandingAuth: React.FC = () => {
   const [forgotStatus, setForgotStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
 
   // Login form state
-  const [loginIdentifier, setLoginIdentifier] = useState('9861234567');
-  const [loginPassword, setLoginPassword] = useState('kisan123');
+  const [loginIdentifier, setLoginIdentifier] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 

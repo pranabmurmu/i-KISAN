@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Sun,
   CloudRain,
   CloudLightning,
+  CloudSun,
+  Cloud,
   Droplets,
   Wind,
   Thermometer,
@@ -27,6 +29,8 @@ import {
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { mockWeatherForecast } from '../../data/mockData';
+import { WeatherLiveCard } from './WeatherLiveCard';
+import { WeatherDay } from '../../types';
 
 export const HomeDashboard: React.FC = () => {
   const {
@@ -41,7 +45,12 @@ export const HomeDashboard: React.FC = () => {
     t,
   } = useApp();
 
-  const todayWeather = mockWeatherForecast[0];
+  const [liveForecastDays, setLiveForecastDays] = useState<WeatherDay[]>(mockWeatherForecast);
+  const [forecastLocation, setForecastLocation] = useState<string>(
+    user?.district ? `${user.district}, ${user.state || 'India'}` : 'Khordha District Agro-Station'
+  );
+
+  const displayForecast = liveForecastDays && liveForecastDays.length > 0 ? liveForecastDays : mockWeatherForecast;
 
   return (
     <div id="home-farmer-dashboard" className="space-y-6 max-w-7xl mx-auto pb-12">
@@ -143,33 +152,16 @@ export const HomeDashboard: React.FC = () => {
             =================================================== */}
         <div className="lg:col-span-7 flex flex-col gap-6">
           
-          {/* Top 2 Cards: Weather & Crop Health */}
+          {/* Top 2 Cards: Live Weather API & Crop Health */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             
-            {/* Weather Card */}
-            <div className="bg-white rounded-3xl p-6 border border-green-100 shadow-sm hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-default">
-              <div>
-                <h4 className="text-xs uppercase font-bold text-green-600 mb-4 tracking-widest">
-                  {t.weatherTitle}
-                </h4>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 text-3xl">
-                    🌧️
-                  </div>
-                  <div>
-                    <p className="text-xl sm:text-2xl font-extrabold text-green-950">
-                      {t.rainProbability}: {todayWeather.rainProbability}%
-                    </p>
-                    <p className="text-xs text-green-600 font-semibold mt-0.5">
-                      32°C • {todayWeather.condition}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 pt-3 border-t border-green-50 text-[11px] text-stone-500">
-                {t.humidity}: <strong className="text-stone-700">{todayWeather.humidity}%</strong> • {t.windSpeed}: <strong className="text-stone-700">{todayWeather.windSpeedKmH} km/h</strong>
-              </div>
-            </div>
+            {/* Live Weather API Card */}
+            <WeatherLiveCard
+              onForecastLoaded={(days, loc) => {
+                setLiveForecastDays(days);
+                setForecastLocation(loc);
+              }}
+            />
 
             {/* Crop Health Card */}
             <div className="bg-white rounded-3xl p-6 border border-green-100 shadow-sm hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-default">
@@ -321,7 +313,9 @@ export const HomeDashboard: React.FC = () => {
                 <h2 className="text-base font-extrabold text-green-950 leading-tight">
                   {t.forecast5Days}
                 </h2>
-                <p className="text-xs text-green-600">Khordha District Agro-Station</p>
+                <p className="text-xs text-green-600 truncate max-w-[220px]">
+                  {forecastLocation}
+                </p>
               </div>
             </div>
             <span className="text-xs font-bold text-blue-800 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
@@ -330,7 +324,7 @@ export const HomeDashboard: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-5 gap-2 pt-1">
-            {mockWeatherForecast.map((day, idx) => (
+            {displayForecast.map((day, idx) => (
               <div
                 key={idx}
                 className={`p-3 rounded-2xl border text-center space-y-1.5 transition-all ${
@@ -343,6 +337,10 @@ export const HomeDashboard: React.FC = () => {
                 <div className="flex justify-center text-blue-600 py-0.5">
                   {day.icon === 'sun' ? (
                     <Sun className="w-5 h-5 text-amber-500" />
+                  ) : day.icon === 'cloud-lightning' ? (
+                    <CloudLightning className="w-5 h-5 text-indigo-600" />
+                  ) : day.icon === 'cloud-sun' ? (
+                    <CloudSun className="w-5 h-5 text-amber-600" />
                   ) : (
                     <CloudRain className="w-5 h-5 text-blue-600" />
                   )}
@@ -354,7 +352,9 @@ export const HomeDashboard: React.FC = () => {
           </div>
 
           <div className="bg-green-50/70 border border-green-100 rounded-xl p-3 text-xs text-green-900 leading-snug">
-            🌾 <strong>Agro Advice:</strong> Soil moisture is optimum for nitrogen top-dressing before expected rains.
+            🌾 <strong>Agro Advice:</strong>{' '}
+            {displayForecast[0]?.advisory ||
+              'Soil moisture is optimum for nitrogen top-dressing before expected rains.'}
           </div>
         </section>
 
@@ -363,3 +363,4 @@ export const HomeDashboard: React.FC = () => {
     </div>
   );
 };
+

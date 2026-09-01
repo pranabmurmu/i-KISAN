@@ -3,7 +3,8 @@
   "description": "A modern, farmer-friendly multilingual agricultural advisory and distress early-warning platform for small and marginal farmers.",
   "requestFramePermissions": [
     "camera",
-    "microphone"
+    "microphone",
+    "geolocation"
   ],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

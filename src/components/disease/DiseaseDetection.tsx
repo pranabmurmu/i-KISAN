@@ -24,7 +24,7 @@ import {
   MessageSquare,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { mockDiseaseSamples } from '../../data/mockData';
+import { mockDiseaseSamples, ripeTomatoesImg, tomatoBlightImg } from '../../data/mockData';
 import { cropNamesList } from '../../data/translations';
 import { DiseaseDetectionResult } from '../../types';
 
@@ -34,9 +34,7 @@ export const DiseaseDetection: React.FC = () => {
   const [selectedCrop, setSelectedCrop] = useState<string>('Tomato');
   const [symptomText, setSymptomText] = useState<string>('');
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
-  const [uploadedImage, setUploadedImage] = useState<string | null>(
-    '/src/assets/images/ripe_red_tomatoes_1788178557607.jpg'
-  );
+  const [uploadedImage, setUploadedImage] = useState<string | null>(ripeTomatoesImg);
   const [isCameraActive, setIsCameraActive] = useState<boolean>(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [isRecordingVoice, setIsRecordingVoice] = useState<boolean>(false);

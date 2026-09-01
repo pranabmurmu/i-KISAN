@@ -11,6 +11,39 @@ import {
   NotificationItem
 } from '../types';
 
+// Image assets imports for production-safe bundler resolution
+import paddySeedsImg from '../assets/images/paddy_seeds_sack_1788177145179.jpg';
+import bioNpkImg from '../assets/images/bio_npk_fertilizer_1788177163441.jpg';
+import neemOilImg from '../assets/images/neem_oil_pesticide_1788177182578.jpg';
+import knapsackSprayerImg from '../assets/images/knapsack_farm_sprayer_1788177202011.jpg';
+import dripIrrigationImg from '../assets/images/drip_irrigation_kit_1788177220736.jpg';
+import digitalSoilMeterImg from '../assets/images/digital_soil_meter_1788177239364.jpg';
+
+import cropRoiFarmingImg from '../assets/images/crop_roi_farming_1788177425953.jpg';
+import drainagePaddyImg from '../assets/images/drainage_paddy_field_1788177441527.jpg';
+import cropInsuranceImg from '../assets/images/crop_insurance_pmfby_1788177457126.jpg';
+import bioPestControlImg from '../assets/images/bio_pest_control_1788177471547.jpg';
+import pmKisanImg from '../assets/images/pm_kisan_scheme_1788177485476.jpg';
+
+import tomatoBlightImg from '../assets/images/tomato_leaf_blight_1788178376330.jpg';
+import ripeTomatoesImg from '../assets/images/ripe_red_tomatoes_1788178557607.jpg';
+
+export {
+  paddySeedsImg,
+  bioNpkImg,
+  neemOilImg,
+  knapsackSprayerImg,
+  dripIrrigationImg,
+  digitalSoilMeterImg,
+  cropRoiFarmingImg,
+  drainagePaddyImg,
+  cropInsuranceImg,
+  bioPestControlImg,
+  pmKisanImg,
+  tomatoBlightImg,
+  ripeTomatoesImg,
+};
+
 export const demoFarmer: FarmerProfile = {
   id: 'farmer-pranab-001',
   fullName: 'Pranab',
@@ -279,7 +312,7 @@ export const mockAgriProducts: AgriProduct[] = [
     rating: 4.8,
     reviewCount: 342,
     description: 'ICAR-NRRI certified blast-resistant variety with 10.2% protein and high milling yield.',
-    imageUrl: '/src/assets/images/paddy_seeds_sack_1788177145179.jpg',
+    imageUrl: paddySeedsImg,
     inStock: true,
     subsidyAvailable: true,
     badge: 'Govt Subsidized (20%)',
@@ -293,7 +326,7 @@ export const mockAgriProducts: AgriProduct[] = [
     rating: 4.7,
     reviewCount: 218,
     description: 'Fixes atmospheric nitrogen, solubilizes phosphorus, and mobilizes potash naturally in loamy soil.',
-    imageUrl: '/src/assets/images/bio_npk_fertilizer_1788177163441.jpg',
+    imageUrl: bioNpkImg,
     inStock: true,
     badge: '100% Organic',
   },
@@ -306,7 +339,7 @@ export const mockAgriProducts: AgriProduct[] = [
     rating: 4.9,
     reviewCount: 512,
     description: 'Natural broad-spectrum bio-pesticide repellent against leaf folders, brown planthoppers & borers.',
-    imageUrl: '/src/assets/images/neem_oil_pesticide_1788177182578.jpg',
+    imageUrl: neemOilImg,
     inStock: true,
     badge: 'Eco-Friendly',
   },
@@ -319,7 +352,7 @@ export const mockAgriProducts: AgriProduct[] = [
     rating: 4.6,
     reviewCount: 174,
     description: '12V 8Ah rechargeable battery with 6 hours backup, adjustable brass nozzle, and pressure gauge.',
-    imageUrl: '/src/assets/images/knapsack_farm_sprayer_1788177202011.jpg',
+    imageUrl: knapsackSprayerImg,
     inStock: true,
     badge: 'Top Rated',
   },
@@ -332,7 +365,7 @@ export const mockAgriProducts: AgriProduct[] = [
     rating: 4.8,
     reviewCount: 89,
     description: 'Complete 16mm inline lateral drip pipes, disc filter, ball valves, and connectors for vegetable intercropping.',
-    imageUrl: '/src/assets/images/drip_irrigation_kit_1788177220736.jpg',
+    imageUrl: dripIrrigationImg,
     inStock: true,
     subsidyAvailable: true,
     badge: 'Water Saver',
@@ -346,7 +379,7 @@ export const mockAgriProducts: AgriProduct[] = [
     rating: 4.5,
     reviewCount: 126,
     description: 'Instant readout probe to check root-zone moisture before initiating irrigation cycles.',
-    imageUrl: '/src/assets/images/digital_soil_meter_1788177239364.jpg',
+    imageUrl: digitalSoilMeterImg,
     inStock: true,
     badge: 'Precision Tool',
   },
@@ -361,7 +394,7 @@ export const mockFarmingArticles: FarmingArticle[] = [
     readTimeMinutes: 4,
     author: 'Dr. S. K. Nayak (Senior Agronomist, OUAT)',
     publishDate: '24 Aug 2026',
-    imageUrl: '/src/assets/images/crop_roi_farming_1788177425953.jpg',
+    imageUrl: cropRoiFarmingImg,
     recommendedFor: {
       regions: ['Odisha', 'West Bengal', 'Andhra Pradesh'],
       soilTypes: ['Loamy', 'Alluvial'],
@@ -382,7 +415,7 @@ export const mockFarmingArticles: FarmingArticle[] = [
     readTimeMinutes: 3,
     author: 'Agri-Meteorology Division, ICAR',
     publishDate: '26 Aug 2026',
-    imageUrl: '/src/assets/images/drainage_paddy_field_1788177441527.jpg',
+    imageUrl: drainagePaddyImg,
     recommendedFor: {
       crops: ['Paddy (Rice)', 'Sugarcane'],
       soilTypes: ['Clayey', 'Loamy'],
@@ -401,7 +434,7 @@ export const mockFarmingArticles: FarmingArticle[] = [
     readTimeMinutes: 5,
     author: 'National Crop Insurance Scheme Directorate',
     publishDate: '20 Aug 2026',
-    imageUrl: '/src/assets/images/crop_insurance_pmfby_1788177457126.jpg',
+    imageUrl: cropInsuranceImg,
     recommendedFor: {
       regions: ['All India'],
     },
@@ -419,7 +452,7 @@ export const mockFarmingArticles: FarmingArticle[] = [
     readTimeMinutes: 4,
     author: 'KVK Khordha Plant Pathology Lab',
     publishDate: '18 Aug 2026',
-    imageUrl: '/src/assets/images/bio_pest_control_1788177471547.jpg',
+    imageUrl: bioPestControlImg,
     recommendedFor: {
       crops: ['Paddy (Rice)', 'Cotton', 'Maize (Corn)'],
     },
@@ -437,7 +470,7 @@ export const mockFarmingArticles: FarmingArticle[] = [
     readTimeMinutes: 2,
     author: 'Ministry of Agriculture & Farmers Welfare',
     publishDate: '27 Aug 2026',
-    imageUrl: '/src/assets/images/pm_kisan_scheme_1788177485476.jpg',
+    imageUrl: pmKisanImg,
     recommendedFor: {
       regions: ['All India'],
     },
